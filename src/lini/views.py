@@ -5,7 +5,7 @@ from lini.serializers import *
 from OrderPlacer.models import *
 
 def index(request):
-    htlm = "<H1> Order Placer Page. You Place order here.</H1><HR>"
+    htlm = "<H1> Order Placer Page.  You Place order here.</H1><HR>"
     return HttpResponse(htlm)
 
 def review(request):
