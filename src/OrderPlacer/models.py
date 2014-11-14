@@ -1,14 +1,14 @@
 from django.db import models
 from django.contrib.contenttypes.fields import GenericForeignKey
 from django.contrib.contenttypes.models import ContentType
-from datetime import date
+from datetime import date, datetime
 from django.contrib.auth.models import User
 
 class BaseModel(models.Model):
     created_dt = models.DateTimeField(auto_now_add=True)
     modified_dt = models.DateTimeField(auto_now_add=True)
     beg_effective_dt = models.DateTimeField(auto_now_add=True)
-    end_effecitve_dt = models.DateTimeField(default=date(2199,12,31))
+    end_effecitve_dt = models.DateTimeField(default=datetime(2199,12,31))
     created_by =  models.ForeignKey(User, related_name="%(app_label)s_%(class)s_created_by")
     modified_by = models.ForeignKey(User, related_name ="%(app_label)s_%(class)s_modified_by")
         
