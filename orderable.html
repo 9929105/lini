@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<p>Please input a number between 1 and 10:</p>
+
+<input id="input_display" type="text">
+<input id="input_description" type="text">
+
+<button type="button" onclick="display()">Submit</button>
+
+<p id="show_display"></p>
+<p id="show_description"></p>
+<p id="full_display"></p>
+
+<script type="text/javascript">
+
+var one_orderable ={
+	 description:"Allergen, Watermelon"
+	,display:"Watermelon"
+	,print:function() {
+		return this.description + " " + this.display;
+	}
+};
+
+
+function display() {
+    var display, description;
+
+    // Get the value of input field with id="numb"
+	
+    var ordabls_string = '{ "orderables":['+
+                                   '{"display":"Lemon", "description":"Allergent, Lemon"},'+
+                                   '{"display":"Lime", "description":"Allergent, Lime"},'+
+                                   '{"display":"Strawberry", "description":"Allergent, Strabwerry"}'+
+                                  ']}';
+	var ol = JSON.parse(ordabls_string);
+    
+    display = document.getElementById("input_display").value; 
+    document.getElementById("show_display").innerHTML = ol.orderables[2].display;
+    
+    description = document.getElementById("input_description").value; 
+    document.getElementById("show_description").innerHTML = ol.orderables[2].description;
+    
+    one_orderable.display = display;
+    one_orderable.description = description;
+    //one_orderable = orderable_list[2];
+        
+    //document.getElementById("full_display").innerHTML = one_orderable.print();
+    
+    
+}
+
+
+</script>
+
+</body>
+</html> 
