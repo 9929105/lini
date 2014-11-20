@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+<meta content="utf-8" http-equiv="encoding">
+<head>
+
+<script type="text/javascript">
+
+
+function getServices(){
+ 	var xmlhttp = new XMLHttpRequest();
+	var url = "http://127.0.0.1:8000/";
+	
+	xmlhttp.onreadystatechange=function() {
+	    if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+	        getMedService(xmlhttp.responseText);
+	    }
+	}
+	xmlhttp.open("GET", url, true);
+	xmlhttp.setRequestHeader ("Accept", "application/json");
+	
+	xmlhttp.send(); 
+	
+	//document.getElementById("id01").innerHTML = "Goodbye";
+}
+
+function getMedService(response) {
+	 var arr = JSON.parse(response);
+     var i;
+     var out = "<table>";
+	var output;
+    
+    for (property in arr) {
+    	out += "<tr><td><a href="+arr[property]+">"+property+"</a></td></tr>";
+    }   
+    out+= "</table>"
+    document.getElementById("id01").innerHTML = out
+}
+
+
+function addMedService_OnClick(){
+ 	var xmlhttp = new XMLHttpRequest();
+	var url = "http://127.0.0.1:8000/MedicalService/";
+	
+	xmlhttp.open("POST", url, true);
+	xmlhttp.onreadystatechange=function() {
+	    if (xmlhttp.readyState == 4) {
+	    	getMedServicePost(xmlhttp.responseText);
+	    }
+	}
+	
+	
+	xmlhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+	
+	var str = '{"end_effecitve_dt": "2199-12-31T23:59:00",'+ 
+		    '"created_by": "http://127.0.0.1:8000/users/1/",'+
+		    '"modified_by": "http://127.0.0.1:8000/users/1/",'+ 
+		    '"display": "THIRD Test",'+
+		    '"description": "My Third Test",'+
+		    '"specialty": "Laboratory", '+
+		    '"price": 13.00}'
+
+	var obj = {
+		    		//"end_effecitve_dt": "2199-12-31T23:59:00", 
+		    "created_by": "http://127.0.0.1:8000/users/1/",
+		    "modified_by": "http://127.0.0.1:8000/users/1/", 
+		    "display": "THIRD Test",
+		    "description": "My Third Test",
+		    "specialty": "Laboratory", 
+		    "price": 13.00}
+
+		    
+	document.getElementById("send_request").innerHTML = xmlhttp
+	xmlhttp.send(JSON.stringify(obj)); 
+	
+	
+	
+}
+
+function getMedServicePost(response) {
+	// var arr = JSON.parse(response);
+    var i;
+	var output;
+   
+
+   document.getElementById("message").innerHTML = response
+}
+
+</script>
+</head>
+<body>
+
+
+<h1>MainReferencePage</h1>
+<div id="Service Browser">
+	<p id="id01">HELLO, Click below to browse all Available API's</p>
+	<button type="button" onclick="getServices()">Get Servics</button>
+</div>
+
+<div id="MedicalServiceEntry">
+
+<!-- -
+	<input id="Name" type="text">
+	<input id="Description" type="text">
+	<input id="Price" type="Number">
+-->
+	<button type="button" onclick="addMedService_OnClick()">AddMedService_OnClick</button>
+	<p id="send_request">Sending Request</p>
+	<p id="message">Message Here</p>
+</div>
+ 
+
+
+</body>
+</html>
+

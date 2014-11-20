@@ -10,6 +10,7 @@ https://docs.djangoproject.com/en/1.7/ref/settings/
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
+from django.template.defaultfilters import default
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
 
@@ -37,17 +38,20 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    'corsheaders',
     'OrderPlacer',
 )
 
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    
 )
 
 ROOT_URLCONF = 'lini.urls'
@@ -78,6 +82,7 @@ USE_L10N = True
 
 USE_TZ = True
 
+CORS_ORIGIN_ALLOW_ALL = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.7/howto/static-files/
@@ -88,7 +93,12 @@ REST_FRAMEWORK = {
     # Use Django's standard `django.contrib.auth` permissions,
     # or allow read-only access for unauthenticated users.
     'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
+        'rest_framework.permissions.AllowAny',
+#        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
+        
     ],
-    'PAGINATE_BY': 10,
+     'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.TokenAuthentication',
+    ),
+    'PAGINATE_BY': 100,
 }

@@ -30,6 +30,7 @@ class SynonymSerializer(serializers.HyperlinkedModelSerializer):
 class PriceHistorySerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = PriceHistory
+        depth = 1
         
 class EncounterSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
