@@ -8,6 +8,9 @@ from rest_framework import status
 from lini.serializers import *
 from OrderPlacer.models import *
 from django.views.decorators.csrf import csrf_exempt
+from rest_framework.renderers import JSONRenderer
+from rest_framework.parsers import JSONParser
+import pdb
 
 def index(request):
     htlm = "<H1> Order Placer Page.  You Place order here.</H1><HR>"
@@ -37,74 +40,37 @@ def get_services(request, test_name='ALL'):
     
     return response
                 
-# Serializers define the API representation.
 
+
+# Serializers define the API representation.
 
 class PersonViewSet(viewsets.ModelViewSet):
     queryset = Person.objects.all()
     serializer_class = PersonSerializer
-
+    
+class PriceHistoryViewSet(viewsets.ModelViewSet):
+    queryset = PriceHistory.objects.all()
+    serializer_class = PriceHistorySerializer
 
 class MedicalServiceViewSet(viewsets.ModelViewSet):
     queryset = MedicalService.objects.all()
     serializer_class =MedicalServiceSerializer
     
-
-# 
-# @csrf_exempt
-# class MedicalServiceList(APIView):
-#     
-#     def get(self, request, format=None):
-#         medicalServices = MedicalService.objects.all()
-#         serializer = MedicalServiceSerializer(medicalServices, many=True)
-#         return Response(serializer.data)
-# 
-#     def post(self, request, format=None):
-#         serializer = MedicalServiceSerializer(data=request.DATA)
-#         if serializer.is_valid():
-#             serializer.save()
-#             return Response(serializer.data, status=status.HTTP_201_CREATED)
-#         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-# 
-# @csrf_exempt
-# class MedicalServiceDetail(APIView):
-#     """
-#     Retrieve, update or delete a snippet instance.
-#     """
-#     def get_object(self, pk):
-#         try:
-#             return MedicalService.objects.get(pk=pk)
-#         except MedicalService.DoesNotExist:
-#             raise Http404
-# 
-#     def get(self, request, pk, format=None):
-#         service = self.get_object(pk)
-#         serializer = MedicalServiceSerializer(service)
-#         return Response(serializer.data)
-# 
-#     def put(self, request, pk, format=None):
-#         service = self.get_object(pk)
-#         serializer = MedicalServiceSerializer(service, data=request.DATA)
-#         if serializer.is_valid():
-#             serializer.save()
-#             return Response(serializer.data)
-#         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-# 
-#     def delete(self, request, pk, format=None):
-#         service = self.get_object(pk)
-#         service.delete()
-#         return Response(status=status.HTTP_204_NO_CONTENT)
-
-
+    def post_save(self, obj, created=False):
+        pdb.set_trace()
+        ph = PriceHistory()
+        ph.modified_by = obj.modified_by
+        ph.created_by = obj.created_by
+        ph.service = obj
+        ph.price = obj.price
+        ph.save()
 
 
 class SynonymViewSet(viewsets.ModelViewSet):
     queryset = Synonym.objects.all()
     serializer_class = SynonymSerializer
 
-class PriceHistoryViewSet(viewsets.ModelViewSet):
-    queryset = PriceHistory.objects.all()
-    serializer_class = PriceHistorySerializer
+
 
 class EncounterViewSet(viewsets.ModelViewSet):
     queryset = Encounter.objects.all()

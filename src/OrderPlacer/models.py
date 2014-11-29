@@ -1,14 +1,14 @@
 from django.db import models
 from django.contrib.contenttypes.fields import GenericForeignKey
 from django.contrib.contenttypes.models import ContentType
-from datetime import date, datetime
+from datetime import date, datetime, tzinfo
 from django.contrib.auth.models import User
 
 class BaseModel(models.Model):
     created_dt = models.DateTimeField(auto_now_add=True)
     modified_dt = models.DateTimeField(auto_now_add=True)
     beg_effective_dt = models.DateTimeField(auto_now_add=True)
-    end_effecitve_dt = models.DateTimeField(default=datetime(2199,12,31))
+    end_effective_dt = models.DateTimeField(default=datetime(2199,12,31, 0, 0))
     created_by =  models.ForeignKey(User, related_name="%(app_label)s_%(class)s_created_by")
     modified_by = models.ForeignKey(User, related_name ="%(app_label)s_%(class)s_modified_by")
         
@@ -41,6 +41,7 @@ class MedicalService(BaseModel):
     specialty = models.CharField(max_length=200)
     price = models.FloatField(default=0.00)
     
+    
 class Synonym(BaseModel):
     
     service = models.ForeignKey(MedicalService, related_name="synonym_service")
@@ -49,8 +50,7 @@ class Synonym(BaseModel):
     language = models.CharField(max_length=1000)
 
 class PriceHistory (BaseModel):
-    
-    service = models.ForeignKey(MedicalService,related_name="price_service")
+    service = models.ForeignKey(MedicalService,related_name="pricehistories")
     price = models.FloatField(default=0.00)
      
 class Encounter(BaseModel):   
