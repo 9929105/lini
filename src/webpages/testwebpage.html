@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+<meta content="utf-8" http-equiv="encoding">
+<head>
+
+<script type="text/javascript">
+
+
+function getServices(){
+ 	var xmlhttp = new XMLHttpRequest();
+	var url = "http://127.0.0.1:8000/";
+	
+	xmlhttp.onreadystatechange=function() {
+	    if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+	        getMedService(xmlhttp.responseText);
+	    }
+	}
+	xmlhttp.open("GET", url, true);
+	xmlhttp.setRequestHeader ("Accept", "application/json");
+	
+	xmlhttp.send(); 
+	
+	//document.getElementById("id01").innerHTML = "Goodbye";
+}
+
+function getMedService(response) {
+	 var arr = JSON.parse(response);
+     var i;
+     var out = "<table>";
+	var output;
+    
+    for (property in arr) {
+    	out += "<tr><td><a href="+arr[property]+">"+property+"</a></td></tr>";
+    }   
+    out+= "</table>"
+    document.getElementById("id01").innerHTML = out
+}
+
+
+function addMedService_OnClick(){
+ 	var xmlhttp = new XMLHttpRequest();
+	var url = "http://127.0.0.1:8000/MedicalService/";
+	
+	xmlhttp.open("POST", url, true);
+	xmlhttp.onreadystatechange=function() {
+	    if (xmlhttp.readyState == 4) {
+	    	getMedServicePost(xmlhttp.responseText);
+	    }
+	}
+	
+	
+	xmlhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+	
+
+	var obj = {
+    		//"end_effecitve_dt": "2199-12-31T23:59:00", 
+    "created_by": 1,
+    "modified_by": 1}
+	
+	obj.display = document.getElementById("display").value;
+	obj.description = document.getElementById("description").value;
+	obj.specialty = document.getElementById("specialty").value;
+	obj.price = document.getElementById("price").value;
+ 
+		    
+
+		    
+	document.getElementById("send_request").innerHTML = JSON.stringify(obj)
+	xmlhttp.send(JSON.stringify(obj)); 
+	
+	
+	
+}
+
+
+function addPriceHistory_OnClick(){
+ 	var xmlhttp = new XMLHttpRequest();
+	var url = "http://127.0.0.1:8000/PriceHistory/";
+	
+	xmlhttp.open("POST", url, true);
+	xmlhttp.onreadystatechange=function() {
+	    if (xmlhttp.readyState == 4) {
+	    	getMedServicePost(xmlhttp.responseText);
+	    }
+	}
+	
+	xmlhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+	
+	var obj = {
+		    		//"end_effecitve_dt": "2199-12-31T23:59:00", 
+		    "created_by": 1,
+		    "modified_by": 1}
+	
+	obj.service = document.getElementById("MedService_id").value;
+	obj.price = document.getElementById("ph_price").value;
+ 		    
+	document.getElementById("send_request").innerHTML = JSON.stringify(obj)
+	xmlhttp.send(JSON.stringify(obj)); 
+	
+}
+
+function getMedServicePost(response) {
+	var arr = JSON.parse(response);
+
+	var out = "<table>";
+	    
+    for (property in arr) {
+    	out += "<tr>";
+    		out += "<td>"+property+"</td>";
+    		out += "<td>"+arr[property]+"</td>";
+    	out +="</tr>";
+    }   
+    out+= "</table>"
+    document.getElementById("message").innerHTML = out
+}
+
+</script>
+</head>
+<body>
+
+
+<h1>MainReferencePage</h1>
+<div id="Service Browser">
+	<p id="id01">HELLO, Click below to browse all Available API's</p>
+	<button type="button" onclick="getServices()">Get Servics</button>
+</div>
+
+<div id="MedicalServiceEntry">
+
+
+	<input id="display" type="text"> 
+	<input id="description" type="text">
+	<input id="specialty" type="text">
+	<input id="price" type="number">
+	
+
+	<button type="button" onclick="addMedService_OnClick()">AddMedService_OnClick</button>
+	
+	<p id="send_request">Sending Request</p>
+
+</div>
+<div id="message">MedService_Message Here</div>
+
+<div id="PriceHistoryEntry">
+
+
+	<input id="MedService_id" type="number"> 
+	<input id="ph_price" type="number">
+	
+
+	<button type="button" onclick="addPriceHistory_OnClick()">AddPriceHistory_OnClick</button>
+	
+	<p id="send_request">Sending Request</p>
+
+</div>
+
+
+</body>
+</html>
+
