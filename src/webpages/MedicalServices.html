@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+<meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+<meta content="utf-8" http-equiv="encoding">
+<head>
+<style type="text/css" media="screen">
+
+table{
+border-collapse:collapse;
+border:1px solid #FF0000;
+}
+
+table td{
+border:1px solid #FF0000;
+}
+</style>
+<script type="text/javascript">
+
+var allservices
+
+function getServices(){
+ 	var xmlhttp = new XMLHttpRequest();
+	var url = "http://127.0.0.1:8000/MedicalService/?format=json";
+	
+	xmlhttp.onreadystatechange=function() {
+	    if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+	    	parseResponse(xmlhttp.responseText);
+	    }
+	}
+	xmlhttp.open("GET", url, true);
+	xmlhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+	xmlhttp.send(); 
+	
+}
+
+
+
+function addMedService_OnClick(){
+ 	var xmlhttp = new XMLHttpRequest();
+	var url = "http://127.0.0.1:8000/MedicalService/?format=json";
+	
+	xmlhttp.open("POST", url, true);
+	xmlhttp.onreadystatechange=function() {
+	    if (xmlhttp.readyState == 4) {
+	    	parseResponse(xmlhttp.responseText);
+	    }
+	}
+	
+	
+	xmlhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+	
+
+	var obj = {
+    		//"end_effecitve_dt": "2199-12-31T23:59:00", 
+    "created_by": 1,
+    "modified_by": 1}
+	
+	obj.display = document.getElementById("display").value;
+	obj.description = document.getElementById("description").value;
+	obj.specialty = document.getElementById("speciality").value;
+	obj.price = document.getElementById("price").value;
+ 
+		    
+	//document.getElementById("send_request").innerHTML = JSON.stringify(obj)
+	xmlhttp.send(JSON.stringify(obj)); 
+	
+}
+
+
+
+function parseResponse(response) {
+	
+	var obj = JSON.parse(response)
+	getMedService(obj["results"])
+	
+	//out += "<tr><td>"+property+"</td><td>"+obj["results"]+"</td></tr>";
+	//out += "</table>";
+	//document.getElementById("resulting_output").innerHTML = obj;
+	
+   
+}
+
+function selectService(obj)
+{
+   idx = idx-1;    
+  selectedService = idx;
+  document.getElementById("display").value = obj["display"];
+  document.getElementById("description").value = obj["description"];  
+  document.getElementById("speciality").value = obj["speciality"];  
+  document.getElementById("price").value = obj["price"];  
+  
+}
+function getMedService(objArray) {
+	allservices = objArray
+	var result_table = document.getElementById('result_table');
+	var tr = document.createElement("tr");
+	tr.innerHTML = "<td>ID</td><td>DISPLAY</td><td>DESCRIPTION</td><td>PRICE</td><td>SPECIALITY</td>";
+
+	result_table.appendChild(tr);
+	for (idx in objArray){
+		var obj = objArray[idx];
+		
+		tr = document.createElement("tr");
+		
+		tr.refObject = obj;
+		tr.onclick = function() {
+			  selectService(this.refObject);
+		}
+		
+		tr.innerHTML +=
+				"<td>"+obj["id"]+"</td>"+
+			   	"<td>"+obj["display"]+"</td>"+
+				"<td>"+obj["description"]+"</td>"+
+				"<td>"+obj["price"]+"</td>"+
+				"<td>"+obj["speciality"]+"</td>";
+		result_table.appendChild(tr);
+	}	
+/*	
+	var out = "<table>";
+	out += "<tr><td>ID</td><td>DISPLAY</td><td>DESCRIPTION</td><td>PRICE</td><td>SPECIALITY</td>";
+*/	
+/*
+	for (property in obj){
+			
+		out += "<tr><td> <a href=\"javascript:;\" onclick=\"javascript:selectService("+obj[property]["id"]+");\">"+
+		obj[property]["id"]+"</a></td>"+
+		"<td>"+obj[property]["display"]+"</td>"
+											+"<td>"+obj[property]["description"]+"</td>"
+											+"<td>"+obj[property]["price"]+"</td>"
+											+"<td>"+obj[property]["speciality"]+"</td>"
+											+"</tr>";
+	}	
+	
+	document.getElementById("resulting_output").innerHTML = out;
+*/
+}
+
+
+/* function getMedService(response) {
+	 var arr = JSON.parse(response);
+     var i;
+     var out = "<table>";
+	var output;
+    
+    for (property in arr) {
+    	out += "<tr><td>"+property+"</td><td>"+arr[property]+"</td></tr>";
+    }   
+    out+= "</table>"
+    document.getElementById("resulting_output").innerHTML = out
+}
+ */
+
+
+
+
+</script>
+</head>
+<body>
+
+
+<h1>Medical Services</h1>
+
+
+<div id="MedicalServiceEntry">
+	<p> Medical Service Entry </p>
+	
+	Display: <input id="display" type="text"> 
+	Description: <input id="description" type="text">
+	Speciality: <input id="speciality" type="text">
+	Price: <input id="price" type="number">
+	
+
+	<button type="button" onclick="addMedService_OnClick()">Apply</button>
+</div>
+
+<div id="Service Browser">
+	<button type="button" onclick="getServices()">Get All Servics</button>
+	<p id="resulting_output"> Output results</p>
+</div>
+<div id="Result Display Area">
+	<table id="result_table">
+	</table>
+</div>
+
+
+
+</body>
+</html>
+
