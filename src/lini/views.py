@@ -57,13 +57,13 @@ class MedicalServiceViewSet(viewsets.ModelViewSet):
     serializer_class =MedicalServiceSerializer
     
     def post_save(self, obj, created=False):
-        pdb.set_trace()
         ph = PriceHistory()
         ph.modified_by = obj.modified_by
         ph.created_by = obj.created_by
         ph.service = obj
         ph.price = obj.price
         ph.save()
+    
 
 
 class SynonymViewSet(viewsets.ModelViewSet):

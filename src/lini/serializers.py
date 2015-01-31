@@ -7,13 +7,17 @@ from rest_framework import serializers
 from django.contrib.auth.models import User
 from OrderPlacer.models import * 
 from django.db.models.fields.related import ManyToManyField
-        
+
+class ExternalIdentifierSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ExternalIdentifier
+                
         
 class RoleSerializer(serializers.ModelSerializer):
     class Meta:
         model = Role
         
-class PersonSerializer(serializers.ModelSerializer):   
+class PersonSerializer(serializers.ModelSerializer):
     class Meta:
         model = Person
 
@@ -31,7 +35,7 @@ class MedicalServiceSerializer(serializers.ModelSerializer):
     pricehistories = PriceHistorySerializer(many=True,required=False, blank=True, allow_add_remove=True)
     class Meta:
         model = MedicalService
-          
+        dept = 2
         
 class SynonymSerializer(serializers.ModelSerializer):
     class Meta:
@@ -45,10 +49,7 @@ class OrderSerializer(serializers.ModelSerializer):
     class Meta:
         model = Order
          
-class ExternalIdentifierSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = ExternalIdentifier
-        
+
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User

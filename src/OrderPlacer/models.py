@@ -24,7 +24,7 @@ class Role(BaseModel):
 
 
 class Person(BaseModel):
-    person_identifier = models.CharField(max_length=200)
+    identifier = models.CharField(max_length=200)
     name_last = models.CharField(max_length=200)
     name_first = models.CharField(max_length=200)
     sex = models.CharField(max_length=200)
@@ -38,7 +38,7 @@ class MedicalService(BaseModel):
     
     display = models.CharField(max_length=200)
     description = models.CharField(max_length=200)
-    specialty = models.CharField(max_length=200)
+    speciality = models.CharField(max_length=200)
     price = models.FloatField(default=0.00)
     
     
@@ -74,7 +74,7 @@ class Order(BaseModel):
     collected_by = models.ForeignKey(Person, related_name="order_collected_by")
     
 class ExternalIdentifier(BaseModel):
-    ext_identifier = models.CharField(max_length=500)
+    identifier = models.CharField(max_length=500)
     issued_by = models.CharField(max_length=200)
     unique_pool = models.CharField(max_length=200)
     
