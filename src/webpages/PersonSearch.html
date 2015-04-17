@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+<meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+<meta content="utf-8" http-equiv="encoding">
+<head>
+<style type="text/css" media="screen">
+
+table{
+border-collapse:collapse;
+border:1px solid #FF0000;
+}
+
+table td{
+border:1px solid #FF0000;
+}
+</style>
+<script type="text/javascript">
+
+var allPersons
+var curlink = "http://127.0.0.1:8000/PersonSearch/?format=json";
+var curobj = {};
+function getResults(){
+ 	var xmlhttp = new XMLHttpRequest();
+	var url = curlink;
+		
+	xmlhttp.onreadystatechange=function() {
+	    if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+	    	parseResponse(xmlhttp.responseText);
+	    }
+	}
+	xmlhttp.open("GET", url, true);
+	xmlhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+	xmlhttp.send(); 
+	
+}
+
+
+
+function updateObject_OnClick(){
+ 	var xmlhttp = new XMLHttpRequest();
+	var url = "http://127.0.0.1:8000/PersonSearch/";
+	
+	var obj ={}
+	if (curobj.id > 0) {
+		obj = curobj
+		url = url+curobj.id+"/"
+		xmlhttp.open("PUT", url, true);
+	} else {
+		xmlhttp.open("POST", url, true);
+	}
+	xmlhttp.onreadystatechange=function() {
+	    if (xmlhttp.readyState == 4) {
+	    	parsePostResponse(xmlhttp.responseText);
+	    }
+	}
+
+	xmlhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+	
+	
+	obj.end_effective_td = Date("2199-12-31T23:59:00"); 
+	obj.created_by = 1;
+	obj.modified_by = 1;
+    //"created_by": 1,
+    //"modified_by": 1}
+	
+	obj.name_last = document.getElementById("name_last").value;
+	obj.name_first = document.getElementById("name_first").value;
+	obj.sex = ((document.getElementById("male").checked)? "male" : "female");
+	
+	obj.birthdate = document.getElementById("birthdate").value;
+	obj.identifier = document.getElementById("identifier").value;
+	xmlhttp.send(JSON.stringify(obj)); 
+	
+}
+
+
+function parseResponse(response) {
+	
+	var obj = JSON.parse(response)
+	parseResults(obj["results"])
+	curlink = obj["next"];
+   
+}
+
+
+function selectObject(obj)
+{
+
+  curobj = obj;
+  document.getElementById("name_last").value = obj["name_last"];
+  document.getElementById("name_first").value = obj["name_first"];
+  document.getElementById("sex").value = obj["sex"];  
+  document.getElementById("birthdate").value = obj["birthdate"];  
+  document.getElementById("identifier").value = obj["identifier"];  
+  
+}
+
+function parseResults(objArray) {
+	allPersons = objArray
+	document.getElementById('result_table').innerHTML = "";
+	var result_table = document.getElementById('result_table');
+	var tr = document.createElement("tr");
+	tr.innerHTML = "<td>ID</td><td>Last Name</td><td>First Name</td><td>Sex</td><td>Birthdate</td><td>Identifier</td>";
+
+	result_table.appendChild(tr);
+	for (idx in objArray){
+		var obj = objArray[idx];
+		
+		tr = document.createElement("tr");
+		
+		tr.refObject = obj;
+		tr.onclick = function() {
+			selectObject(this.refObject);
+		}
+		tr.innerHTML +=
+				"<td>"+obj["id"]+"</td>"+
+			   	"<td>"+obj["name_last"]+"</td>"+
+				"<td>"+obj["name_first"]+"</td>"+
+				"<td>"+obj["sex"]+"</td>"+
+				"<td>"+obj["birthdate"]+"</td>"+
+				"<td>"+obj["identifier"]+"</td>";
+		result_table.appendChild(tr);
+	}	
+}
+
+
+
+
+</script>
+</head>
+<body>
+
+
+<h1>Person Search</h1>
+
+
+<div id="PersonSearch">
+	<p> Person Search </p>
+	
+	Last Name: <input id="name_last" type="text"> <br> 
+	First Name: <input id="name_first" type="text"> <br>
+	Birthdate: <input id="birthdate" type="date"> <br>
+	<div id="sex">
+	Sex: <input type="radio" id = "male" name="sex" value="male">Male
+		<input type="radio" id = "female" name="sex" value="female">Female
+	</div> <br>
+	
+	Identifier: <input id="identifier" type="text"> <br>	
+	<br>
+	<button type="button" onclick="updateObject_OnClick()">Apply</button> <br>
+</div>
+<br>
+<div id="Person Browser">
+	<button type="button" onclick="getResults()">Get All Persons</button>
+	<p id="resulting_output"> Output results</p>
+</div>
+<div id="Result Display Area">
+	 <a id="next_page">Next Page</a> 
+	<table id="result_table">
+	</table>
+</div>
+
+
+
+</body>
+</html>
+

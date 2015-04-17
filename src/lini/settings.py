@@ -97,8 +97,11 @@ REST_FRAMEWORK = {
 #        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
         
     ],
+                  
+     'DEFAULT_FILTER_BACKENDS': ('rest_framework.filters.DjangoFilterBackend',),
+     
      'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework.authentication.TokenAuthentication',
     ),
-    'PAGINATE_BY': 100,
+    'PAGINATE_BY': 1000,
 }

@@ -18,8 +18,8 @@ border:1px solid #FF0000;
 
 var allservices
 var curlink = "http://127.0.0.1:8000/MedicalService/?format=json";
-
-function getServices(){
+var curobj={}
+function getResults(){
  	var xmlhttp = new XMLHttpRequest();
 	var url = curlink;
 		
@@ -36,24 +36,32 @@ function getServices(){
 
 
 
-function updateMedService_OnClick(){
+function updateObject_OnClick(){
  	var xmlhttp = new XMLHttpRequest();
-	var url = "http://127.0.0.1:8000/MedicalService/?format=json";
+	var url = "http://127.0.0.1:8000/MedicalService/";
 	
-	xmlhttp.open("POST", url, true);
+	var obj={}
+	if (curobj.id > 0) {
+		obj = curobj
+		url = url+curobj.id+"/"
+		xmlhttp.open("PUT", url, true);
+	} else {
+		xmlhttp.open("POST", url, true);
+	}
 	xmlhttp.onreadystatechange=function() {
 	    if (xmlhttp.readyState == 4) {
 	    	parsePostResponse(xmlhttp.responseText);
 	    }
 	}
-	
-	
+
 	xmlhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
 	
-	var obj = {
-   	"end_effecitve_dt": "2199-12-31T23:59:00", 
-    "created_by": 1,
-    "modified_by": 1}
+	
+	obj.end_effective_td = Date("2199-12-31T23:59:00"); 
+	obj.created_by = 1;
+	obj.modified_by = 1;
+    //"created_by": 1,
+    //"modified_by": 1}
 	
 	obj.display = document.getElementById("display").value;
 	obj.description = document.getElementById("description").value;
@@ -67,27 +75,26 @@ function updateMedService_OnClick(){
 }
 
 
-
 function parseResponse(response) {
 	
 	var obj = JSON.parse(response)
-	getMedService(obj["results"])
+	parseResults(obj["results"])
 	curlink = obj["next"];
    
 }
 
 
-function selectService(obj)
+function selectObject(obj)
 {
 
-  selectedService = obj;
+  curobj = obj;
   document.getElementById("display").value = obj["display"];
   document.getElementById("description").value = obj["description"];  
   document.getElementById("speciality").value = obj["speciality"];  
   document.getElementById("price").value = obj["price"];  
   
 }
-function getMedService(objArray) {
+function parseResults(objArray) {
 	allservices = objArray
 	document.getElementById('result_table').innerHTML = "";
 	var result_table = document.getElementById('result_table');
@@ -102,7 +109,7 @@ function getMedService(objArray) {
 		
 		tr.refObject = obj;
 		tr.onclick = function() {
-			  selectService(this.refObject);
+			  selectObject(this.refObject);
 		}
 		
 		tr.innerHTML +=
@@ -127,19 +134,16 @@ function getMedService(objArray) {
 
 
 <div id="MedicalServiceEntry">
-	<p> Medical Service Entry </p>
-	
-	Display: <input id="display" type="text"> 
-	Description: <input id="description" type="text">
-	Speciality: <input id="speciality" type="text">
-	Price: <input id="price" type="number">
-	
-
-	<button type="button" onclick="updateMedService_OnClick()">Apply</button>
+	<p> Medical Service Entry </p>	
+	Display: <input id="display" type="text"> </br>
+	Description: <input id="description" type="text"> </br>
+	Speciality: <input id="speciality" type="text"> </br>
+	Price: <input id="price" type="number"> </br></br>
+	<button type="button" onclick="updateObject_OnClick()">Apply</button> </br>
 </div>
-
+</br>
 <div id="Service Browser">
-	<button type="button" onclick="getServices()">Get All Servics</button>
+	<button type="button" onclick="getResults()">Get All Servics</button>
 	<p id="resulting_output"> Output results</p>
 </div>
 <div id="Result Display Area">

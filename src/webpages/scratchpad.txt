@@ -1,0 +1,12 @@
+pricehistories	[object Object]
+id	159
+created_dt	2014-12-04T21:37:10.130
+modified_dt	2014-12-04T21:37:10.130
+beg_effective_dt	2014-12-04T21:37:10.130
+end_effective_dt	2199-12-31T00:00:00
+created_by	1
+modified_by	1
+display	aogkei
+description	adkqie
+specialty	Laboratory
+price	20

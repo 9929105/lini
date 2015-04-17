@@ -1,10 +1,12 @@
 from django.db import models
-from django.contrib.contenttypes.fields import GenericForeignKey
+from django.contrib.contenttypes.fields import GenericForeignKey,\
+    GenericRelation
 from django.contrib.contenttypes.models import ContentType
 from datetime import date, datetime, tzinfo
 from django.contrib.auth.models import User
 
 class BaseModel(models.Model):
+
     created_dt = models.DateTimeField(auto_now_add=True)
     modified_dt = models.DateTimeField(auto_now_add=True)
     beg_effective_dt = models.DateTimeField(auto_now_add=True)
@@ -18,6 +20,16 @@ class BaseModel(models.Model):
     def save(self, *args, **kwargs):
         super(BaseModel, self).save(*args, **kwargs)
         
+class ExternalIdentifier(BaseModel):
+    identifier = models.CharField(max_length=500)
+    
+    issued_by = models.CharField(max_length=200)
+    unique_pool = models.CharField(max_length=200)
+    
+    content_type = models.ForeignKey(ContentType)
+    object_id = models.PositiveIntegerField()
+    content_object = GenericForeignKey('content_type', 'object_id', for_concrete_model=False)
+
 
 class Role(BaseModel):
     role_name = models.CharField(max_length=200)  
@@ -25,6 +37,7 @@ class Role(BaseModel):
 
 class Person(BaseModel):
     identifier = models.CharField(max_length=200)
+    identifiers = GenericRelation(ExternalIdentifier)
     name_last = models.CharField(max_length=200)
     name_first = models.CharField(max_length=200)
     sex = models.CharField(max_length=200)
@@ -55,8 +68,8 @@ class PriceHistory (BaseModel):
      
 class Encounter(BaseModel):   
     patient = models.ForeignKey(Person,related_name="encounter_patient")
-    encntr_dt = models.DateTimeField(auto_now_add=True)
-    provider = models.ForeignKey(Person,related_name="encounter_physician")
+    encntr_dt = models.DateTimeField(null=True)
+    provider = models.ForeignKey(Person,related_name="encounter_provider")
     followup_dt = models.DateTimeField(null=True)
 
 class Order(BaseModel):
@@ -73,14 +86,6 @@ class Order(BaseModel):
     ordered_by = models.ForeignKey(Person, related_name="orders_ordered_by")
     collected_by = models.ForeignKey(Person, related_name="order_collected_by")
     
-class ExternalIdentifier(BaseModel):
-    identifier = models.CharField(max_length=500)
-    issued_by = models.CharField(max_length=200)
-    unique_pool = models.CharField(max_length=200)
-    
-    content_type = models.ForeignKey(ContentType)
-    object_id = models.PositiveIntegerField()
-    content_object = GenericForeignKey('content_type', 'object_id')
     
         
  

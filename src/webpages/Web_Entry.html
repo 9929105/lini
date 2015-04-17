@@ -1,0 +1,1562 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <title>
+intakeform_v4 Web Entry
+</title>
+
+    <link rel="shortcut icon" href="http://127.0.0.1:8000/static/favicon/favicon.ico">
+    <link rel="icon" type="image/png" href="http://127.0.0.1:8000/static/favicon/favicon.128.png">
+
+    <link href="Web_Entry_files/font-awesome.css" rel="stylesheet">
+    <link href="Web_Entry_files/layout.css" rel="stylesheet">
+    <!--[if IE 7]>
+    <link href='/static/css/font-awesome-ie7.min.css' rel='styslesheet'>
+    <![endif]-->
+    
+<link rel="stylesheet" type="text/css" href="Web_Entry_files/webform.html">
+
+<style type="text/css">
+  .autocomplete-list {
+    position:absolute;
+  }
+
+  .ui-helper-hidden-accessible {
+    display:none;
+  }
+
+  .ui-autocomplete {
+    border-bottom:1px solid #EEE;
+    border-right:1px solid #EEE;
+    border-left:1px solid #EEE;
+    list-style-type: none;
+    background-color: white;
+  }
+
+  .ui-autocomplete > .ui-menu-item {
+    padding: 4px 8px;
+    cursor:pointer;
+  }
+
+  .ui-autocomplete > .selected {
+    background-color: #EEE;
+  }
+
+  .grid-list-row {
+    border-bottom: 1px solid #000;
+  }
+
+  .grid-list-cell {
+    padding: 3px 15px 2px 15px;
+    text-align: center;
+
+  }
+
+  .grid-list-label {
+    text-align: left;
+  }
+
+  input[type="radio"] {
+    width: auto;
+  }
+
+  label {
+    display: inline;
+  }
+
+</style>
+
+<!-- For Geopoint option -->
+<link rel="stylesheet" href="Web_Entry_files/leaflet.css">
+
+<script src="Web_Entry_files/common.js" data-requiremodule="/static/js/common.js" data-requirecontext="_" async="" charset="utf-8" type="text/javascript"></script><script src="Web_Entry_files/list.js" data-requiremodule="forms/editors/list" data-requirecontext="_" async="" charset="utf-8" type="text/javascript"></script><script src="Web_Entry_files/bootstrap.js" data-requiremodule="forms/templates/bootstrap" data-requirecontext="_" async="" charset="utf-8" type="text/javascript"></script></head>
+<body>
+    
+
+
+    <div class="modal"></div>
+
+    
+    <div class="container" style="padding-top:80px;">
+        
+<div class="container" id="webform">
+  <div class="row">
+    <div class="twelve columns">
+      <h2>
+        
+          <a href="http://127.0.0.1:8000/user/">user</a>/
+        
+        &nbsp;intakeform_v4
+      </h2>
+    </div>
+    <div class="four columns u-textRight">
+      
+      &nbsp;
+      <a href="#" class="btn" id="language-select-btn">
+        <i class="icon-globe"></i>
+        Language
+      </a>
+    </div>
+  </div>
+  <div class="row">
+    <div class="sixteen columns">
+      <div class="progress">
+        <div style="width: 0%;" class="progress-bar progress-bar-success"></div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div id="autofill_list" class="autocomplete-list"></div>
+      <div id="xform_view" class="span12">
+        <div id="form_fields" class="formbox">
+          <div id="formDiv">
+            <form class="form" method="post" action="." enctype="multipart/form-data">
+
+              
+
+              
+                
+              <div id="group_1_field" class="control-group" style="display: block;">
+                
+
+                <label class="control-label" for="group_1">
+                  
+                </label>
+
+                <div class="controls">
+
+                
+
+                
+
+                </div>
+              </div>
+              
+                
+              <div id="name_field" class="control-group" style="">
+                
+
+                <label class="control-label" for="name">
+                  Nombre:
+                </label>
+
+                <div class="controls">
+
+                
+                  <input id="name" name="name" type="text">
+                
+
+                </div>
+              </div>
+              
+                
+              <div id="date_field" class="control-group" style="">
+                
+
+                <label class="control-label" for="date">
+                  Fecha:
+                </label>
+
+                <div class="controls">
+
+                
+
+                </div>
+              </div>
+              
+                
+              <div id="birthdate_field" class="control-group" style="">
+                
+
+                <label class="control-label" for="birthdate">
+                  Fecha de Nacimiento:
+                </label>
+
+                <div class="controls">
+
+                
+
+                </div>
+              </div>
+              
+                
+              <div id="genderlist_field" class="control-group" style="">
+                
+
+                <label class="control-label" for="genderlist">
+                  Sexo:
+                </label>
+
+                <div class="controls">
+
+                
+                  
+                  <ul id="genderlist" name="genderlist">
+                    
+                      <li><span data-editor="">
+                        <input name="genderlist" value="male" id="genderlist-0" type="radio">
+                        <label for="genderlist-0">Hombre</label>
+                        </span>
+                      </li>
+                    
+                      <li><span data-editor="">
+                        <input name="genderlist" value="female" id="genderlist-1" type="radio">
+                        <label for="genderlist-1">Mujer</label>
+                        </span>
+                      </li>
+                    
+                    
+                  </ul>
+                  
+
+                
+
+                </div>
+              </div>
+              
+                
+              <div id="weight_field" class="control-group" style="">
+                
+
+                <label class="control-label" for="weight">
+                  Peso:
+                </label>
+
+                <div class="controls">
+
+                
+                  <span data-editor=""><input id="weight" name="weight" step="any" type="number"></span>
+                
+
+                </div>
+              </div>
+              
+                
+              <div id="height_field" class="control-group" style="">
+                
+
+                <label class="control-label" for="height">
+                  Estatura:
+                </label>
+
+                <div class="controls">
+
+                
+                  
+                  <ul id="height" name="height">
+                    
+                      <li><span data-editor="">
+                        <input name="height" value="h_1" id="height-0" type="radio">
+                        <label for="height-0">4'5''</label>
+                        </span>
+                      </li>
+                    
+                      <li><span data-editor="">
+                        <input name="height" value="h_2" id="height-1" type="radio">
+                        <label for="height-1">4'6''</label>
+                        </span>
+                      </li>
+                    
+                      <li><span data-editor="">
+                        <input name="height" value="h_3" id="height-2" type="radio">
+                        <label for="height-2">4'7''</label>
+                        </span>
+                      </li>
+                    
+                      <li><span data-editor="">
+                        <input name="height" value="h_4" id="height-3" type="radio">
+                        <label for="height-3">4'8''</label>
+                        </span>
+                      </li>
+                    
+                      <li><span data-editor="">
+                        <input name="height" value="h_5" id="height-4" type="radio">
+                        <label for="height-4">4'9''</label>
+                        </span>
+                      </li>
+                    
+                      <li><span data-editor="">
+                        <input name="height" value="h_6" id="height-5" type="radio">
+                        <label for="height-5">4'10''</label>
+                        </span>
+                      </li>
+                    
+                      <li><span data-editor="">
+                        <input name="height" value="h_7" id="height-6" type="radio">
+                        <label for="height-6">4'11''</label>
+                        </span>
+                      </li>
+                    
+                      <li><span data-editor="">
+                        <input name="height" value="h_8" id="height-7" type="radio">
+                        <label for="height-7">5'0''</label>
+                        </span>
+                      </li>
+                    
+                      <li><span data-editor="">
+                        <input name="height" value="h_9" id="height-8" type="radio">
+                        <label for="height-8">5'1''</label>
+                        </span>
+                      </li>
+                    
+                      <li><span data-editor="">
+                        <input name="height" value="h_10" id="height-9" type="radio">
+                        <label for="height-9">5'2''</label>
+                        </span>
+                      </li>
+                    
+                      <li><span data-editor="">
+                        <input name="height" value="h_11" id="height-10" type="radio">
+                        <label for="height-10">5'3''</label>
+                        </span>
+                      </li>
+                    
+                      <li><span data-editor="">
+                        <input name="height" value="h_12" id="height-11" type="radio">
+                        <label for="height-11">5'4''</label>
+                        </span>
+                      </li>
+                    
+                      <li><span data-editor="">
+                        <input name="height" value="h_13" id="height-12" type="radio">
+                        <label for="height-12">5'5''</label>
+                        </span>
+                      </li>
+                    
+                      <li><span data-editor="">
+                        <input name="height" value="h_14" id="height-13" type="radio">
+                        <label for="height-13">5'6''</label>
+                        </span>
+                      </li>
+                    
+                      <li><span data-editor="">
+                        <input name="height" value="h_15" id="height-14" type="radio">
+                        <label for="height-14">5'7''</label>
+                        </span>
+                      </li>
+                    
+                      <li><span data-editor="">
+                        <input name="height" value="h_16" id="height-15" type="radio">
+                        <label for="height-15">5'8''</label>
+                        </span>
+                      </li>
+                    
+                      <li><span data-editor="">
+                        <input name="height" value="h_17" id="height-16" type="radio">
+                        <label for="height-16">5'9''</label>
+                        </span>
+                      </li>
+                    
+                      <li><span data-editor="">
+                        <input name="height" value="h_18" id="height-17" type="radio">
+                        <label for="height-17">5'10''</label>
+                        </span>
+                      </li>
+                    
+                      <li><span data-editor="">
+                        <input name="height" value="h_19" id="height-18" type="radio">
+                        <label for="height-18">5'11''</label>
+                        </span>
+                      </li>
+                    
+                      <li><span data-editor="">
+                        <input name="height" value="h_20" id="height-19" type="radio">
+                        <label for="height-19">6'0''</label>
+                        </span>
+                      </li>
+                    
+                      <li><span data-editor="">
+                        <input name="height" value="h_21" id="height-20" type="radio">
+                        <label for="height-20">6'1''</label>
+                        </span>
+                      </li>
+                    
+                      <li><span data-editor="">
+                        <input name="height" value="h_22" id="height-21" type="radio">
+                        <label for="height-21">6'2''</label>
+                        </span>
+                      </li>
+                    
+                      <li><span data-editor="">
+                        <input name="height" value="h_23" id="height-22" type="radio">
+                        <label for="height-22">6'3''</label>
+                        </span>
+                      </li>
+                    
+                      <li><span data-editor="">
+                        <input name="height" value="h_24" id="height-23" type="radio">
+                        <label for="height-23">6'4''</label>
+                        </span>
+                      </li>
+                    
+                      <li><span data-editor="">
+                        <input name="height" value="h_25" id="height-24" type="radio">
+                        <label for="height-24">6'5''</label>
+                        </span>
+                      </li>
+                    
+                      <li><span data-editor="">
+                        <input name="height" value="h_26" id="height-25" type="radio">
+                        <label for="height-25">6'6''</label>
+                        </span>
+                      </li>
+                    
+                      <li><span data-editor="">
+                        <input name="height" value="h_27" id="height-26" type="radio">
+                        <label for="height-26">6'7''</label>
+                        </span>
+                      </li>
+                    
+                    
+                  </ul>
+                  
+
+                
+
+                </div>
+              </div>
+              
+                
+              <div id="age_field" class="control-group" style="">
+                
+
+                <label class="control-label" for="age">
+                  Edad:
+                </label>
+
+                <div class="controls">
+
+                
+                  <span data-editor=""><input id="age" name="age" step="any" type="number"></span>
+                
+
+                </div>
+              </div>
+              
+                
+              <div id="ptID_field" class="control-group" style="">
+                
+
+                <label class="control-label" for="ptID">
+                  Numero de Identificacion:
+                </label>
+
+                <div class="controls">
+
+                
+                  <input id="ptID" name="ptID" type="text">
+                
+
+                </div>
+              </div>
+              
+                
+              <div id="occupation_list_field" class="control-group" style="">
+                
+
+                <label class="control-label" for="occupation_list">
+                  SITUACION LABORAL:
+                </label>
+
+                <div class="controls">
+
+                
+                  
+                  <ul id="occupation_list" name="occupation_list">
+                    
+                      <li><span data-editor="">
+                        <input name="occupation_list" value="ft" id="occupation_list-0" type="radio">
+                        <label for="occupation_list-0">tiempo completo</label>
+                        </span>
+                      </li>
+                    
+                      <li><span data-editor="">
+                        <input name="occupation_list" value="pt" id="occupation_list-1" type="radio">
+                        <label for="occupation_list-1">tiempo parcial</label>
+                        </span>
+                      </li>
+                    
+                      <li><span data-editor="">
+                        <input name="occupation_list" value="student" id="occupation_list-2" type="radio">
+                        <label for="occupation_list-2">estudiante</label>
+                        </span>
+                      </li>
+                    
+                      <li><span data-editor="">
+                        <input name="occupation_list" value="rt" id="occupation_list-3" type="radio">
+                        <label for="occupation_list-3">retirado</label>
+                        </span>
+                      </li>
+                    
+                      <li><span data-editor="">
+                        <input name="occupation_list" value="unemploy" id="occupation_list-4" type="radio">
+                        <label for="occupation_list-4">desempleado</label>
+                        </span>
+                      </li>
+                    
+                      <li><span data-editor="">
+                        <input name="occupation_list" value="injured" id="occupation_list-5" type="radio">
+                        <label for="occupation_list-5">no trabajo por dano</label>
+                        </span>
+                      </li>
+                    
+                      <li><span data-editor="">
+                        <input name="occupation_list" value="disability" id="occupation_list-6" type="radio">
+                        <label for="occupation_list-6">discapacidad</label>
+                        </span>
+                      </li>
+                    
+                    
+                  </ul>
+                  
+
+                
+
+                </div>
+              </div>
+              
+                
+              <div id="occupation_reqs_field" class="control-group" style="">
+                
+
+                <label class="control-label" for="occupation_reqs">
+                  Requisites de Trabajo
+                </label>
+
+                <div class="controls">
+
+                
+                  <ul id="occupation_reqs" name="occupation_reqs">
+                    
+                      <li><span data-editor="">
+                        <input name="occupation_reqs" value="repet" id="occupation_reqs-0" type="checkbox">
+                        <label for="occupation_reqs-0">movimiento repetido:</label>
+                        </span>
+                      </li>
+                    
+                      <li><span data-editor="">
+                        <input name="occupation_reqs" value="walk" id="occupation_reqs-1" type="checkbox">
+                        <label for="occupation_reqs-1">caminando</label>
+                        </span>
+                      </li>
+                    
+                      <li><span data-editor="">
+                        <input name="occupation_reqs" value="lift" id="occupation_reqs-2" type="checkbox">
+                        <label for="occupation_reqs-2">levantar</label>
+                        </span>
+                      </li>
+                    
+                      <li><span data-editor="">
+                        <input name="occupation_reqs" value="kneel" id="occupation_reqs-3" type="checkbox">
+                        <label for="occupation_reqs-3">arrodillado</label>
+                        </span>
+                      </li>
+                    
+                      <li><span data-editor="">
+                        <input name="occupation_reqs" value="carry" id="occupation_reqs-4" type="checkbox">
+                        <label for="occupation_reqs-4">cargando</label>
+                        </span>
+                      </li>
+                    
+                      <li><span data-editor="">
+                        <input name="occupation_reqs" value="sit" id="occupation_reqs-5" type="checkbox">
+                        <label for="occupation_reqs-5">sentado</label>
+                        </span>
+                      </li>
+                    
+                      <li><span data-editor="">
+                        <input name="occupation_reqs" value="stand" id="occupation_reqs-6" type="checkbox">
+                        <label for="occupation_reqs-6">estar parado</label>
+                        </span>
+                      </li>
+                    
+                      <li><span data-editor="">
+                        <input name="occupation_reqs" value="otherRQ" id="occupation_reqs-7" type="checkbox">
+                        <label for="occupation_reqs-7">otra:</label>
+                        </span>
+                      </li>
+                    
+                  </ul>
+                
+
+                </div>
+              </div>
+              
+                
+              <div id="other_OCRQ_field" class="control-group" style="">
+                
+
+                <label class="control-label" for="other_OCRQ">
+                  otra:
+                </label>
+
+                <div class="controls">
+
+                
+                  <input id="other_OCRQ" name="other_OCRQ" type="text">
+                
+
+                </div>
+              </div>
+              
+                
+              <div id="have_insurance_field" class="control-group" style="">
+                
+
+                <label class="control-label" for="have_insurance">
+                  Tiene seguro?
+                </label>
+
+                <div class="controls">
+
+                
+                  
+                  <ul id="have_insurance" name="have_insurance">
+                    
+                      <li><span data-editor="">
+                        <input name="have_insurance" value="no" id="have_insurance-0" type="radio">
+                        <label for="have_insurance-0">No</label>
+                        </span>
+                      </li>
+                    
+                      <li><span data-editor="">
+                        <input name="have_insurance" value="yes" id="have_insurance-1" type="radio">
+                        <label for="have_insurance-1">Yes</label>
+                        </span>
+                      </li>
+                    
+                    
+                  </ul>
+                  
+
+                
+
+                </div>
+              </div>
+              
+                
+              <div id="insuranceYes_field" class="control-group" style="">
+                
+
+                <label class="control-label" for="insuranceYes">
+                  En caso afirmativo:
+                </label>
+
+                <div class="controls">
+
+                
+                  <input id="insuranceYes" name="insuranceYes" type="text">
+                
+
+                </div>
+              </div>
+              
+                
+              <div id="whyPT_field" class="control-group" style="">
+                
+
+                <label class="control-label" for="whyPT">
+                  Para que necesita fisioterapia?
+                </label>
+
+                <div class="controls">
+
+                
+                  <input id="whyPT" name="whyPT" type="text">
+                
+
+                </div>
+              </div>
+              
+                
+              <div id="whenStart_field" class="control-group" style="">
+                
+
+                <label class="control-label" for="whenStart">
+                  Cuando empezo su problema?
+                </label>
+
+                <div class="controls">
+
+                
+                  <input id="whenStart" name="whenStart" type="text">
+                
+
+                </div>
+              </div>
+              
+                
+              <div id="wasInjury_field" class="control-group" style="">
+                
+
+                <label class="control-label" for="wasInjury">
+                  Se dano en una manera?
+                </label>
+
+                <div class="controls">
+
+                
+                  <input id="wasInjury" name="wasInjury" type="text">
+                
+
+                </div>
+              </div>
+              
+                
+              <div id="who_referred_field" class="control-group" style="">
+                
+
+                <label class="control-label" for="who_referred">
+                  Quien le refiere a fisioterapia?
+                </label>
+
+                <div class="controls">
+
+                
+                  <input id="who_referred" name="who_referred" type="text">
+                
+
+                </div>
+              </div>
+              
+                
+              <div id="another_treat_field" class="control-group" style="">
+                
+
+                <label class="control-label" for="another_treat">
+                  Alguien mas le ha ayudado?
+                </label>
+
+                <div class="controls">
+
+                
+                  
+                  <ul id="another_treat" name="another_treat">
+                    
+                      <li><span data-editor="">
+                        <input name="another_treat" value="no" id="another_treat-0" type="radio">
+                        <label for="another_treat-0">No</label>
+                        </span>
+                      </li>
+                    
+                      <li><span data-editor="">
+                        <input name="another_treat" value="yes" id="another_treat-1" type="radio">
+                        <label for="another_treat-1">Yes</label>
+                        </span>
+                      </li>
+                    
+                    
+                  </ul>
+                  
+
+                
+
+                </div>
+              </div>
+              
+                
+              <div id="lastSeen_field" class="control-group" style="">
+                
+
+                <label class="control-label" for="lastSeen">
+                  cuando le vio:
+                </label>
+
+                <div class="controls">
+
+                
+                  <input id="lastSeen" name="lastSeen" type="text">
+                
+
+                </div>
+              </div>
+              
+                
+              <div id="pain_scale_field" class="control-group" style="">
+                
+
+                <label class="control-label" for="pain_scale">
+                  DOLOR/SINTOMA:
+                </label>
+
+                <div class="controls">
+
+                
+                  
+                  <ul id="pain_scale" name="pain_scale">
+                    
+                      <li><span data-editor="">
+                        <input name="pain_scale" value="ps_1" id="pain_scale-0" type="radio">
+                        <label for="pain_scale-0">0 - no dolor</label>
+                        </span>
+                      </li>
+                    
+                      <li><span data-editor="">
+                        <input name="pain_scale" value="ps_2" id="pain_scale-1" type="radio">
+                        <label for="pain_scale-1">1-2- poco de dolor</label>
+                        </span>
+                      </li>
+                    
+                      <li><span data-editor="">
+                        <input name="pain_scale" value="ps_3" id="pain_scale-2" type="radio">
+                        <label for="pain_scale-2">3-4 - dolor moderado</label>
+                        </span>
+                      </li>
+                    
+                      <li><span data-editor="">
+                        <input name="pain_scale" value="ps_4" id="pain_scale-3" type="radio">
+                        <label for="pain_scale-3">5-6 - mucho dolor</label>
+                        </span>
+                      </li>
+                    
+                      <li><span data-editor="">
+                        <input name="pain_scale" value="ps_5" id="pain_scale-4" type="radio">
+                        <label for="pain_scale-4">7-8 - dolor severo</label>
+                        </span>
+                      </li>
+                    
+                      <li><span data-editor="">
+                        <input name="pain_scale" value="ps_6" id="pain_scale-5" type="radio">
+                        <label for="pain_scale-5">9-10 - dolor insoportable</label>
+                        </span>
+                      </li>
+                    
+                    
+                  </ul>
+                  
+
+                
+
+                </div>
+              </div>
+              
+                
+              <div id="limited_activities_field" class="control-group" style="">
+                
+
+                <label class="control-label" for="limited_activities">
+                  Que actividades le hace dolor?
+                </label>
+
+                <div class="controls">
+
+                
+                  <ul id="limited_activities" name="limited_activities">
+                    
+                      <li><span data-editor="">
+                        <input name="limited_activities" value="walking" id="limited_activities-0" type="checkbox">
+                        <label for="limited_activities-0">caminando</label>
+                        </span>
+                      </li>
+                    
+                      <li><span data-editor="">
+                        <input name="limited_activities" value="lifting" id="limited_activities-1" type="checkbox">
+                        <label for="limited_activities-1">levantar</label>
+                        </span>
+                      </li>
+                    
+                      <li><span data-editor="">
+                        <input name="limited_activities" value="sleeping" id="limited_activities-2" type="checkbox">
+                        <label for="limited_activities-2">dormir</label>
+                        </span>
+                      </li>
+                    
+                      <li><span data-editor="">
+                        <input name="limited_activities" value="working" id="limited_activities-3" type="checkbox">
+                        <label for="limited_activities-3">empleo</label>
+                        </span>
+                      </li>
+                    
+                      <li><span data-editor="">
+                        <input name="limited_activities" value="sitting" id="limited_activities-4" type="checkbox">
+                        <label for="limited_activities-4">sentado</label>
+                        </span>
+                      </li>
+                    
+                      <li><span data-editor="">
+                        <input name="limited_activities" value="standing" id="limited_activities-5" type="checkbox">
+                        <label for="limited_activities-5">estar parado</label>
+                        </span>
+                      </li>
+                    
+                      <li><span data-editor="">
+                        <input name="limited_activities" value="exercising" id="limited_activities-6" type="checkbox">
+                        <label for="limited_activities-6">ejercicio</label>
+                        </span>
+                      </li>
+                    
+                      <li><span data-editor="">
+                        <input name="limited_activities" value="housework" id="limited_activities-7" type="checkbox">
+                        <label for="limited_activities-7">tareas de la casa</label>
+                        </span>
+                      </li>
+                    
+                      <li><span data-editor="">
+                        <input name="limited_activities" value="otherLimit" id="limited_activities-8" type="checkbox">
+                        <label for="limited_activities-8">otra</label>
+                        </span>
+                      </li>
+                    
+                  </ul>
+                
+
+                </div>
+              </div>
+              
+                
+              <div id="other_limit_act_field" class="control-group" style="">
+                
+
+                <label class="control-label" for="other_limit_act">
+                  otra:
+                </label>
+
+                <div class="controls">
+
+                
+                  <input id="other_limit_act" name="other_limit_act" type="text">
+                
+
+                </div>
+              </div>
+              
+                
+              <div id="primary_complaint_field" class="control-group" style="">
+                
+
+                <label class="control-label" for="primary_complaint">
+                  Cual es su quejo principal?
+                </label>
+
+                <div class="controls">
+
+                
+                  <ul id="primary_complaint" name="primary_complaint">
+                    
+                      <li><span data-editor="">
+                        <input name="primary_complaint" value="decreased" id="primary_complaint-0" type="checkbox">
+                        <label for="primary_complaint-0">movimiento limitado</label>
+                        </span>
+                      </li>
+                    
+                      <li><span data-editor="">
+                        <input name="primary_complaint" value="stiff" id="primary_complaint-1" type="checkbox">
+                        <label for="primary_complaint-1">rigidez</label>
+                        </span>
+                      </li>
+                    
+                      <li><span data-editor="">
+                        <input name="primary_complaint" value="numb" id="primary_complaint-2" type="checkbox">
+                        <label for="primary_complaint-2">entumecimiento</label>
+                        </span>
+                      </li>
+                    
+                      <li><span data-editor="">
+                        <input name="primary_complaint" value="spas" id="primary_complaint-3" type="checkbox">
+                        <label for="primary_complaint-3">espasmo</label>
+                        </span>
+                      </li>
+                    
+                      <li><span data-editor="">
+                        <input name="primary_complaint" value="swell" id="primary_complaint-4" type="checkbox">
+                        <label for="primary_complaint-4">hinchado</label>
+                        </span>
+                      </li>
+                    
+                      <li><span data-editor="">
+                        <input name="primary_complaint" value="unstable" id="primary_complaint-5" type="checkbox">
+                        <label for="primary_complaint-5">inestabilidad</label>
+                        </span>
+                      </li>
+                    
+                      <li><span data-editor="">
+                        <input name="primary_complaint" value="pain" id="primary_complaint-6" type="checkbox">
+                        <label for="primary_complaint-6">dolor</label>
+                        </span>
+                      </li>
+                    
+                      <li><span data-editor="">
+                        <input name="primary_complaint" value="weak" id="primary_complaint-7" type="checkbox">
+                        <label for="primary_complaint-7">debilidad</label>
+                        </span>
+                      </li>
+                    
+                      <li><span data-editor="">
+                        <input name="primary_complaint" value="balance" id="primary_complaint-8" type="checkbox">
+                        <label for="primary_complaint-8">falta de equilibrio</label>
+                        </span>
+                      </li>
+                    
+                      <li><span data-editor="">
+                        <input name="primary_complaint" value="otherComp" id="primary_complaint-9" type="checkbox">
+                        <label for="primary_complaint-9">otra</label>
+                        </span>
+                      </li>
+                    
+                  </ul>
+                
+
+                </div>
+              </div>
+              
+                
+              <div id="other_prim_comp_field" class="control-group" style="">
+                
+
+                <label class="control-label" for="other_prim_comp">
+                  otra:
+                </label>
+
+                <div class="controls">
+
+                
+                  <input id="other_prim_comp" name="other_prim_comp" type="text">
+                
+
+                </div>
+              </div>
+              
+                
+              <div id="describe_pain_field" class="control-group" style="">
+                
+
+                <label class="control-label" for="describe_pain">
+                  Que palabras describen su dolor:
+                </label>
+
+                <div class="controls">
+
+                
+                  <ul id="describe_pain" name="describe_pain">
+                    
+                      <li><span data-editor="">
+                        <input name="describe_pain" value="sharp" id="describe_pain-0" type="checkbox">
+                        <label for="describe_pain-0">dolor agudo</label>
+                        </span>
+                      </li>
+                    
+                      <li><span data-editor="">
+                        <input name="describe_pain" value="throb" id="describe_pain-1" type="checkbox">
+                        <label for="describe_pain-1">punzante</label>
+                        </span>
+                      </li>
+                    
+                      <li><span data-editor="">
+                        <input name="describe_pain" value="ache" id="describe_pain-2" type="checkbox">
+                        <label for="describe_pain-2">dolorido</label>
+                        </span>
+                      </li>
+                    
+                      <li><span data-editor="">
+                        <input name="describe_pain" value="burn" id="describe_pain-3" type="checkbox">
+                        <label for="describe_pain-3">ardiente</label>
+                        </span>
+                      </li>
+                    
+                      <li><span data-editor="">
+                        <input name="describe_pain" value="deep" id="describe_pain-4" type="checkbox">
+                        <label for="describe_pain-4">profundo</label>
+                        </span>
+                      </li>
+                    
+                      <li><span data-editor="">
+                        <input name="describe_pain" value="sting" id="describe_pain-5" type="checkbox">
+                        <label for="describe_pain-5">picadura</label>
+                        </span>
+                      </li>
+                    
+                      <li><span data-editor="">
+                        <input name="describe_pain" value="constant" id="describe_pain-6" type="checkbox">
+                        <label for="describe_pain-6">constante</label>
+                        </span>
+                      </li>
+                    
+                      <li><span data-editor="">
+                        <input name="describe_pain" value="otherPain" id="describe_pain-7" type="checkbox">
+                        <label for="describe_pain-7">otra</label>
+                        </span>
+                      </li>
+                    
+                  </ul>
+                
+
+                </div>
+              </div>
+              
+                
+              <div id="other_pain_field" class="control-group" style="">
+                
+
+                <label class="control-label" for="other_pain">
+                  otra:
+                </label>
+
+                <div class="controls">
+
+                
+                  <input id="other_pain" name="other_pain" type="text">
+                
+
+                </div>
+              </div>
+              
+                
+              <div id="regular_exercise_field" class="control-group" style="">
+                
+
+                <label class="control-label" for="regular_exercise">
+                  Hace ejercicio?
+                </label>
+
+                <div class="controls">
+
+                
+                  
+                  <ul id="regular_exercise" name="regular_exercise">
+                    
+                      <li><span data-editor="">
+                        <input name="regular_exercise" value="everyday" id="regular_exercise-0" type="radio">
+                        <label for="regular_exercise-0">cada dia</label>
+                        </span>
+                      </li>
+                    
+                      <li><span data-editor="">
+                        <input name="regular_exercise" value="atWork" id="regular_exercise-1" type="radio">
+                        <label for="regular_exercise-1">todo el dia con trabajo</label>
+                        </span>
+                      </li>
+                    
+                      <li><span data-editor="">
+                        <input name="regular_exercise" value="sometimes" id="regular_exercise-2" type="radio">
+                        <label for="regular_exercise-2">a veces</label>
+                        </span>
+                      </li>
+                    
+                      <li><span data-editor="">
+                        <input name="regular_exercise" value="never" id="regular_exercise-3" type="radio">
+                        <label for="regular_exercise-3">nunca</label>
+                        </span>
+                      </li>
+                    
+                    
+                  </ul>
+                  
+
+                
+
+                </div>
+              </div>
+              
+                
+              <div id="medical_history_field" class="control-group" style="">
+                
+
+                <label class="control-label" for="medical_history">
+                  HISTORIAL MEDICO/CIRUGIA):
+                </label>
+
+                <div class="controls">
+
+                
+                  <ul id="medical_history" name="medical_history">
+                    
+                      <li><span data-editor="">
+                        <input name="medical_history" value="hypertension" id="medical_history-0" type="checkbox">
+                        <label for="medical_history-0">Hipertension</label>
+                        </span>
+                      </li>
+                    
+                      <li><span data-editor="">
+                        <input name="medical_history" value="heartDisease" id="medical_history-1" type="checkbox">
+                        <label for="medical_history-1">Enfermedad del Corazon</label>
+                        </span>
+                      </li>
+                    
+                      <li><span data-editor="">
+                        <input name="medical_history" value="smoke" id="medical_history-2" type="checkbox">
+                        <label for="medical_history-2">Fumar</label>
+                        </span>
+                      </li>
+                    
+                      <li><span data-editor="">
+                        <input name="medical_history" value="stroke" id="medical_history-3" type="checkbox">
+                        <label for="medical_history-3">Accidente Cerbrovascular</label>
+                        </span>
+                      </li>
+                    
+                      <li><span data-editor="">
+                        <input name="medical_history" value="cholesterol" id="medical_history-4" type="checkbox">
+                        <label for="medical_history-4">Cholesterol Alto</label>
+                        </span>
+                      </li>
+                    
+                      <li><span data-editor="">
+                        <input name="medical_history" value="anemia" id="medical_history-5" type="checkbox">
+                        <label for="medical_history-5">Anemia</label>
+                        </span>
+                      </li>
+                    
+                      <li><span data-editor="">
+                        <input name="medical_history" value="bleeding" id="medical_history-6" type="checkbox">
+                        <label for="medical_history-6">Trastorno de la Coagulacion</label>
+                        </span>
+                      </li>
+                    
+                      <li><span data-editor="">
+                        <input name="medical_history" value="none" id="medical_history-7" type="checkbox">
+                        <label for="medical_history-7">nada</label>
+                        </span>
+                      </li>
+                    
+                      <li><span data-editor="">
+                        <input name="medical_history" value="headache" id="medical_history-8" type="checkbox">
+                        <label for="medical_history-8">Dolor de cabeza grave</label>
+                        </span>
+                      </li>
+                    
+                      <li><span data-editor="">
+                        <input name="medical_history" value="cerv" id="medical_history-9" type="checkbox">
+                        <label for="medical_history-9">Trastorno de cuello</label>
+                        </span>
+                      </li>
+                    
+                      <li><span data-editor="">
+                        <input name="medical_history" value="lumbar" id="medical_history-10" type="checkbox">
+                        <label for="medical_history-10">Trastorno de espalda</label>
+                        </span>
+                      </li>
+                    
+                      <li><span data-editor="">
+                        <input name="medical_history" value="osteo" id="medical_history-11" type="checkbox">
+                        <label for="medical_history-11">Osteoporosis</label>
+                        </span>
+                      </li>
+                    
+                      <li><span data-editor="">
+                        <input name="medical_history" value="prego" id="medical_history-12" type="checkbox">
+                        <label for="medical_history-12">Embarazada</label>
+                        </span>
+                      </li>
+                    
+                      <li><span data-editor="">
+                        <input name="medical_history" value="fracture" id="medical_history-13" type="checkbox">
+                        <label for="medical_history-13">Fractura</label>
+                        </span>
+                      </li>
+                    
+                      <li><span data-editor="">
+                        <input name="medical_history" value="nerve" id="medical_history-14" type="checkbox">
+                        <label for="medical_history-14">Dano de nervio</label>
+                        </span>
+                      </li>
+                    
+                      <li><span data-editor="">
+                        <input name="medical_history" value="diabetes" id="medical_history-15" type="checkbox">
+                        <label for="medical_history-15">Diabetes</label>
+                        </span>
+                      </li>
+                    
+                      <li><span data-editor="">
+                        <input name="medical_history" value="alcohol" id="medical_history-16" type="checkbox">
+                        <label for="medical_history-16">Abuso de alcohol o drogas</label>
+                        </span>
+                      </li>
+                    
+                      <li><span data-editor="">
+                        <input name="medical_history" value="depression" id="medical_history-17" type="checkbox">
+                        <label for="medical_history-17">Depresion</label>
+                        </span>
+                      </li>
+                    
+                      <li><span data-editor="">
+                        <input name="medical_history" value="renal" id="medical_history-18" type="checkbox">
+                        <label for="medical_history-18">Enfermedad renal</label>
+                        </span>
+                      </li>
+                    
+                      <li><span data-editor="">
+                        <input name="medical_history" value="thyroid" id="medical_history-19" type="checkbox">
+                        <label for="medical_history-19">Enfermedad tiroides</label>
+                        </span>
+                      </li>
+                    
+                      <li><span data-editor="">
+                        <input name="medical_history" value="stomach" id="medical_history-20" type="checkbox">
+                        <label for="medical_history-20">Enfermedad de estomago</label>
+                        </span>
+                      </li>
+                    
+                      <li><span data-editor="">
+                        <input name="medical_history" value="mental" id="medical_history-21" type="checkbox">
+                        <label for="medical_history-21">Enfermedad psicologica</label>
+                        </span>
+                      </li>
+                    
+                  </ul>
+                
+
+                </div>
+              </div>
+              
+                
+              <div id="numPacks_field" class="control-group" style="">
+                
+
+                <label class="control-label" for="numPacks">
+                  Fumar, cuantos cada dia:
+                </label>
+
+                <div class="controls">
+
+                
+                  <span data-editor=""><input id="numPacks" name="numPacks" step="any" type="number"></span>
+                
+
+                </div>
+              </div>
+              
+                
+              <div id="numWeeks_field" class="control-group" style="">
+                
+
+                <label class="control-label" for="numWeeks">
+                  número de semanas de embarazo
+                </label>
+
+                <div class="controls">
+
+                
+                  <span data-editor=""><input id="numWeeks" name="numWeeks" step="any" type="number"></span>
+                
+
+                </div>
+              </div>
+              
+                
+              <div id="medications_field" class="control-group" style="">
+                
+
+                <label class="control-label" for="medications">
+                  Medicaciones que toma:
+                </label>
+
+                <div class="controls">
+
+                
+                  <input id="medications" name="medications" type="text">
+                
+
+                </div>
+              </div>
+              
+                
+              <div id="allergies_field" class="control-group" style="">
+                
+
+                <label class="control-label" for="allergies">
+                  allergies (Alergias):
+                </label>
+
+                <div class="controls">
+
+                
+                  <input id="allergies" name="allergies" type="text">
+                
+
+                </div>
+              </div>
+              
+                
+              <div id="accomplish_field" class="control-group" style="">
+                
+
+                <label class="control-label" for="accomplish">
+                  Que le gustaria lograr con fisioterapia?
+                </label>
+
+                <div class="controls">
+
+                
+                  <input id="accomplish" name="accomplish" type="text">
+                
+
+                </div>
+              </div>
+              
+                
+              <div id="how_get_info_field" class="control-group" style="">
+                
+
+                <label class="control-label" for="how_get_info">
+                  Como quiere recibir informacion para su fisioterapia?
+                </label>
+
+                <div class="controls">
+
+                
+                  
+                  <ul id="how_get_info" name="how_get_info">
+                    
+                      <li><span data-editor="">
+                        <input name="how_get_info" value="written" id="how_get_info-0" type="radio">
+                        <label for="how_get_info-0">escrito</label>
+                        </span>
+                      </li>
+                    
+                      <li><span data-editor="">
+                        <input name="how_get_info" value="verbal" id="how_get_info-1" type="radio">
+                        <label for="how_get_info-1">hablada</label>
+                        </span>
+                      </li>
+                    
+                      <li><span data-editor="">
+                        <input name="how_get_info" value="demonstrated" id="how_get_info-2" type="radio">
+                        <label for="how_get_info-2">demostracion</label>
+                        </span>
+                      </li>
+                    
+                    
+                  </ul>
+                  
+
+                
+
+                </div>
+              </div>
+              
+                
+              <div id="comments_field" class="control-group" style="">
+                
+
+                <label class="control-label" for="comments">
+                  Comentarios:
+                </label>
+
+                <div class="controls">
+
+                
+                  <input id="comments" name="comments" type="text">
+                
+
+                </div>
+              </div>
+              
+                
+              <div id="sign_field" class="control-group" style="">
+                
+
+                <label class="control-label" for="sign">
+                  Firmar:
+                </label>
+
+                <div class="controls">
+
+                
+                  <input id="sign" name="sign" type="text">
+                
+
+                </div>
+              </div>
+              
+                
+              <div id="sign_date_field" class="control-group" style="">
+                
+
+                <label class="control-label" for="sign_date">
+                  Fecha:
+                </label>
+
+                <div class="controls">
+
+                
+
+                </div>
+              </div>
+              
+
+            </form>
+          </div>
+          <div id="alert-placeholder"></div>
+        </div>
+        <div id="form_actions" style="overflow:auto;">
+          <div class="pull-right">
+            <a style="display: inline;" href="#" class="btn" id="next_btn">Next</a>
+            <a href="#" class="btn btn-success" style="display: none;" id="submit_btn">Submit</a>
+          </div>
+        <a href="#" class="btn" style="display: none;" id="prev_btn">Previous</a>
+      </div>
+      </div>
+  </div>
+</div>
+
+    </div>
+    
+
+    
+
+    <footer class="footer sticky-footer">
+  <div class="container">
+  	<div class="row">
+  		<div class="sixteen columns">
+      		Built by the <a href="http://distributedhealth.org/">Distributed Health Lab</a> at University of California, San Diego.
+    	</div>
+    </div>
+  </div>
+</footer>
+
+
+    
+
+    <!-- EVIL TRACKER -->
+    <script src="Web_Entry_files/analytics.js" async=""></script><script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-40791426-1', 'distributedhealth.org');
+        ga('send', 'pageview');
+    </script>
+    
+<script id="form_id" type="text/html">551595ab683da70bbc089657</script>
+<script id="user" type="text/html">user</script>
+<script type="text/javascript">
+  document.repo = {"type": "survey", "name": "intakeform_v4", "date_updated": "2015-03-27T17:38:51", "submissions": 1, "study": null, "uri": "/user/intakeform_v4/", "webform_uri": "/user/intakeform_v4/webform/", "is_form_public": false, "children": [{"control": {"appearance": "field-list"}, "type": "group", "name": "group_1", "children": [{"control": {"appearance": "minimal"}, "type": "text", "name": "name", "label": {"Spanish": "Nombre:", "English": "Name:"}}, {"control": {"appearance": "minimal"}, "type": "date", "name": "date", "label": {"Spanish": "Fecha:", "English": "Today\u2019s Date:"}}, {"control": {"appearance": "minimal"}, "type": "date", "name": "birthdate", "label": {"Spanish": "Fecha de Nacimiento:", "English": "Birth Date:"}}, {"control": {"appearance": "minimal"}, "label": {"Spanish": "Sexo:", "English": "Gender:"}, "type": "select one", "name": "genderlist", "choices": [{"name": "male", "label": {"Spanish": "Hombre", "English": "Male"}}, {"name": "female", "label": {"Spanish": "Mujer", "English": "Female"}}]}, {"control": {"appearance": "minimal"}, "type": "integer", "name": "weight", "label": {"Spanish": "Peso:", "English": "Weight:"}}, {"control": {"appearance": "minimal"}, "label": {"Spanish": "Estatura:", "English": "Height:"}, "type": "select one", "name": "height", "choices": [{"name": "h_1", "label": {"Spanish": "4'5''", "English": "4'5''"}}, {"name": "h_2", "label": {"Spanish": "4'6''", "English": "4'6''"}}, {"name": "h_3", "label": {"Spanish": "4'7''", "English": "4'7''"}}, {"name": "h_4", "label": {"Spanish": "4'8''", "English": "4'8''"}}, {"name": "h_5", "label": {"Spanish": "4'9''", "English": "4'9''"}}, {"name": "h_6", "label": {"Spanish": "4'10''", "English": "4'10''"}}, {"name": "h_7", "label": {"Spanish": "4'11''", "English": "4'11''"}}, {"name": "h_8", "label": {"Spanish": "5'0''", "English": "5'0''"}}, {"name": "h_9", "label": {"Spanish": "5'1''", "English": "5'1''"}}, {"name": "h_10", "label": {"Spanish": "5'2''", "English": "5'2''"}}, {"name": "h_11", "label": {"Spanish": "5'3''", "English": "5'3''"}}, {"name": "h_12", "label": {"Spanish": "5'4''", "English": "5'4''"}}, {"name": "h_13", "label": {"Spanish": "5'5''", "English": "5'5''"}}, {"name": "h_14", "label": {"Spanish": "5'6''", "English": "5'6''"}}, {"name": "h_15", "label": {"Spanish": "5'7''", "English": "5'7''"}}, {"name": "h_16", "label": {"Spanish": "5'8''", "English": "5'8''"}}, {"name": "h_17", "label": {"Spanish": "5'9''", "English": "5'9''"}}, {"name": "h_18", "label": {"Spanish": "5'10''", "English": "5'10''"}}, {"name": "h_19", "label": {"Spanish": "5'11''", "English": "5'11''"}}, {"name": "h_20", "label": {"Spanish": "6'0''", "English": "6'0''"}}, {"name": "h_21", "label": {"Spanish": "6'1''", "English": "6'1''"}}, {"name": "h_22", "label": {"Spanish": "6'2''", "English": "6'2''"}}, {"name": "h_23", "label": {"Spanish": "6'3''", "English": "6'3''"}}, {"name": "h_24", "label": {"Spanish": "6'4''", "English": "6'4''"}}, {"name": "h_25", "label": {"Spanish": "6'5''", "English": "6'5''"}}, {"name": "h_26", "label": {"Spanish": "6'6''", "English": "6'6''"}}, {"name": "h_27", "label": {"Spanish": "6'7''", "English": "6'7''"}}]}, {"control": {"appearance": "minimal"}, "bind": {"constraint": "${age} > 0"}, "type": "integer", "name": "age", "label": {"Spanish": "Edad:", "English": "Age:"}}, {"control": {"appearance": "minimal"}, "type": "text", "name": "ptID", "label": {"Spanish": "Numero de Identificacion:", "English": "Patient I.D:"}}, {"control": {"appearance": "minimal"}, "label": {"Spanish": "SITUACION LABORAL:", "English": "OCCUPATION STATUS:"}, "type": "select one", "name": "occupation_list", "choices": [{"name": "ft", "label": {"Spanish": "tiempo completo", "English": "full-time"}}, {"name": "pt", "label": {"Spanish": "tiempo parcial", "English": "part-time"}}, {"name": "student", "label": {"Spanish": "estudiante", "English": "student"}}, {"name": "rt", "label": {"Spanish": "retirado", "English": "retired"}}, {"name": "unemploy", "label": {"Spanish": "desempleado", "English": "not employed"}}, {"name": "injured", "label": {"Spanish": "no trabajo por dano", "English": "not working due to injury"}}, {"name": "disability", "label": {"Spanish": "discapacidad", "English": "on disability due to injury or other condition"}}]}, {"control": {"appearance": "minimal"}, "label": {"Spanish": "Requisites de Trabajo", "English": "Occupation Requirements:"}, "type": "select all that apply", "name": "occupation_reqs", "choices": [{"name": "repet", "label": {"Spanish": "movimiento repetido:", "English": "repetitive motions"}}, {"name": "walk", "label": {"Spanish": "caminando", "English": "walking"}}, {"name": "lift", "label": {"Spanish": "levantar", "English": "lifting"}}, {"name": "kneel", "label": {"Spanish": "arrodillado", "English": "kneeling"}}, {"name": "carry", "label": {"Spanish": "cargando", "English": "carrying"}}, {"name": "sit", "label": {"Spanish": "sentado", "English": "sitting"}}, {"name": "stand", "label": {"Spanish": "estar parado", "English": "standing"}}, {"name": "otherRQ", "label": {"Spanish": "otra:", "English": "other"}}]}, {"control": {"appearance": "minimal"}, "type": "text", "name": "other_OCRQ", "label": {"Spanish": "otra:", "English": "if other:"}}, {"control": {"appearance": "minimal"}, "label": {"Spanish": "Tiene seguro?", "English": "Do you currently have insurance:"}, "type": "select one", "name": "have_insurance", "choices": [{"name": "no", "label": {"Spanish": "No", "English": "No"}}, {"name": "yes", "label": {"Spanish": "Yes", "English": "Yes"}}]}, {"control": {"appearance": "minimal"}, "type": "text", "name": "insuranceYes", "label": {"Spanish": "En caso afirmativo:", "English": "If yes:"}}, {"control": {"appearance": "minimal"}, "type": "text", "name": "whyPT", "label": {"Spanish": "Para que necesita fisioterapia?", "English": "Why do you seek Physical Therapy today:"}}, {"control": {"appearance": "minimal"}, "type": "text", "name": "whenStart", "label": {"Spanish": "Cuando empezo su problema?", "English": "When did the problem start:"}}, {"control": {"appearance": "minimal"}, "type": "text", "name": "wasInjury", "label": {"Spanish": "Se dano en una manera?", "English": "Was there an injury:"}}, {"control": {"appearance": "minimal"}, "type": "text", "name": "who_referred", "label": {"Spanish": "Quien le refiere a fisioterapia?", "English": "Who referred you to Physical Therapy:"}}, {"control": {"appearance": "minimal"}, "label": {"Spanish": "Alguien mas le ha ayudado?", "English": "Has another provider treated this problem:"}, "type": "select one", "name": "another_treat", "choices": [{"name": "no", "label": {"Spanish": "No", "English": "No"}}, {"name": "yes", "label": {"Spanish": "Yes", "English": "Yes"}}]}, {"control": {"appearance": "minimal"}, "type": "text", "name": "lastSeen", "label": {"Spanish": "cuando le vio:", "English": "Last seen:"}}, {"control": {"appearance": "minimal"}, "label": {"Spanish": "DOLOR/SINTOMA:", "English": "PAIN/SYMPTOMS:"}, "type": "select one", "name": "pain_scale", "choices": [{"name": "ps_1", "label": {"Spanish": "0 - no dolor", "English": "0 - no pain"}}, {"name": "ps_2", "label": {"Spanish": "1-2- poco de dolor", "English": "1-2 - minimal pain"}}, {"name": "ps_3", "label": {"Spanish": "3-4 - dolor moderado", "English": "3-4 - moderate pain"}}, {"name": "ps_4", "label": {"Spanish": "5-6 - mucho dolor", "English": "5-6 - painful"}}, {"name": "ps_5", "label": {"Spanish": "7-8 - dolor severo", "English": "7-8 - very painful"}}, {"name": "ps_6", "label": {"Spanish": "9-10 - dolor insoportable", "English": "9-10 - severe pain"}}]}, {"control": {"appearance": "minimal"}, "label": {"Spanish": "Que actividades le hace dolor?", "English": "Which activities are limited due to your problem? :"}, "type": "select all that apply", "name": "limited_activities", "choices": [{"name": "walking", "label": {"Spanish": "caminando", "English": "walking"}}, {"name": "lifting", "label": {"Spanish": "levantar", "English": "lifting"}}, {"name": "sleeping", "label": {"Spanish": "dormir", "English": "sleeping"}}, {"name": "working", "label": {"Spanish": "empleo", "English": "work"}}, {"name": "sitting", "label": {"Spanish": "sentado", "English": "sitting"}}, {"name": "standing", "label": {"Spanish": "estar parado", "English": "standing"}}, {"name": "exercising", "label": {"Spanish": "ejercicio", "English": "exercise"}}, {"name": "housework", "label": {"Spanish": "tareas de la casa", "English": "housework"}}, {"name": "otherLimit", "label": {"Spanish": "otra", "English": "other"}}]}, {"control": {"appearance": "minimal"}, "type": "text", "name": "other_limit_act", "label": {"Spanish": "otra:", "English": "if other:"}}, {"control": {"appearance": "minimal"}, "label": {"Spanish": "Cual es su quejo principal?", "English": "What are your primary complaints :"}, "type": "select all that apply", "name": "primary_complaint", "choices": [{"name": "decreased", "label": {"Spanish": "movimiento limitado", "English": "decreased motion"}}, {"name": "stiff", "label": {"Spanish": "rigidez", "English": "stiffness"}}, {"name": "numb", "label": {"Spanish": "entumecimiento", "English": "numbness"}}, {"name": "spas", "label": {"Spanish": "espasmo", "English": "spasm"}}, {"name": "swell", "label": {"Spanish": "hinchado", "English": "swelling"}}, {"name": "unstable", "label": {"Spanish": "inestabilidad", "English": "instability"}}, {"name": "pain", "label": {"Spanish": "dolor", "English": "pain"}}, {"name": "weak", "label": {"Spanish": "debilidad", "English": "weakness"}}, {"name": "balance", "label": {"Spanish": "falta de equilibrio", "English": "poor balance"}}, {"name": "otherComp", "label": {"Spanish": "otra", "English": "other"}}]}, {"control": {"appearance": "minimal"}, "type": "text", "name": "other_prim_comp", "label": {"Spanish": "otra:", "English": "if other:"}}, {"control": {"appearance": "minimal"}, "label": {"Spanish": "Que palabras describen su dolor:", "English": "What words would you use to describe your pain :"}, "type": "select all that apply", "name": "describe_pain", "choices": [{"name": "sharp", "label": {"Spanish": "dolor agudo", "English": "sharp"}}, {"name": "throb", "label": {"Spanish": "punzante", "English": "throbbing"}}, {"name": "ache", "label": {"Spanish": "dolorido", "English": "aching"}}, {"name": "burn", "label": {"Spanish": "ardiente", "English": "burning"}}, {"name": "deep", "label": {"Spanish": "profundo", "English": "deep"}}, {"name": "sting", "label": {"Spanish": "picadura", "English": "stinging"}}, {"name": "constant", "label": {"Spanish": "constante", "English": "constant"}}, {"name": "otherPain", "label": {"Spanish": "otra", "English": "other"}}]}, {"control": {"appearance": "minimal"}, "type": "text", "name": "other_pain", "label": {"Spanish": "otra:", "English": "if other:"}}, {"control": {"appearance": "minimal"}, "label": {"Spanish": "Hace ejercicio?", "English": "Do you exercise regularly:"}, "type": "select one", "name": "regular_exercise", "choices": [{"name": "everyday", "label": {"Spanish": "cada dia", "English": "everyday"}}, {"name": "atWork", "label": {"Spanish": "todo el dia con trabajo", "English": "all day at work"}}, {"name": "sometimes", "label": {"Spanish": "a veces", "English": "sometimes"}}, {"name": "never", "label": {"Spanish": "nunca", "English": "never"}}]}, {"control": {"appearance": "minimal"}, "label": {"Spanish": "HISTORIAL MEDICO/CIRUGIA):", "English": "MEDICAL/SURGICAL HISTORY:"}, "type": "select all that apply", "name": "medical_history", "choices": [{"name": "hypertension", "label": {"Spanish": "Hipertension", "English": "High blood pressure"}}, {"name": "heartDisease", "label": {"Spanish": "Enfermedad del Corazon", "English": "Heart disease"}}, {"name": "smoke", "label": {"Spanish": "Fumar", "English": "Smoker"}}, {"name": "stroke", "label": {"Spanish": "Accidente Cerbrovascular", "English": "History of stroke"}}, {"name": "cholesterol", "label": {"Spanish": "Cholesterol Alto", "English": "High cholesterol"}}, {"name": "anemia", "label": {"Spanish": "Anemia", "English": "Anemia"}}, {"name": "bleeding", "label": {"Spanish": "Trastorno de la Coagulacion", "English": "Bleeding disorder"}}, {"name": "none", "label": {"Spanish": "nada", "English": "None"}}, {"name": "headache", "label": {"Spanish": "Dolor de cabeza grave", "English": "Severe headaches"}}, {"name": "cerv", "label": {"Spanish": "Trastorno de cuello", "English": "Cervical spine disorder"}}, {"name": "lumbar", "label": {"Spanish": "Trastorno de espalda", "English": "Lumbar spine disorder"}}, {"name": "osteo", "label": {"Spanish": "Osteoporosis", "English": "Osteoporosis"}}, {"name": "prego", "label": {"Spanish": "Embarazada", "English": "Pregnant"}}, {"name": "fracture", "label": {"Spanish": "Fractura", "English": "Fractures"}}, {"name": "nerve", "label": {"Spanish": "Dano de nervio", "English": "Nerve injury"}}, {"name": "diabetes", "label": {"Spanish": "Diabetes", "English": "Diabetes"}}, {"name": "alcohol", "label": {"Spanish": "Abuso de alcohol o drogas", "English": "Alcohol or drug abuse"}}, {"name": "depression", "label": {"Spanish": "Depresion", "English": "Depression"}}, {"name": "renal", "label": {"Spanish": "Enfermedad renal", "English": "Kidney disease"}}, {"name": "thyroid", "label": {"Spanish": "Enfermedad tiroides", "English": "Thyroid disease"}}, {"name": "stomach", "label": {"Spanish": "Enfermedad de estomago", "English": "Stomach or bowel disease"}}, {"name": "mental", "label": {"Spanish": "Enfermedad psicologica", "English": "Mental health problems"}}]}, {"control": {"appearance": "minimal"}, "type": "integer", "name": "numPacks", "label": {"Spanish": "Fumar, cuantos cada dia:", "English": "Smoke packs a day:"}}, {"control": {"appearance": "minimal"}, "type": "integer", "name": "numWeeks", "label": {"Spanish": "n\u00famero de semanas de embarazo", "English": "# of weeks pregnant :"}}, {"control": {"appearance": "minimal"}, "type": "text", "name": "medications", "label": {"Spanish": "Medicaciones que toma:", "English": "Medications:"}}, {"control": {"appearance": "minimal"}, "type": "text", "name": "allergies", "label": {"Spanish": "allergies (Alergias):", "English": "Medication allergies:"}}, {"control": {"appearance": "minimal"}, "type": "text", "name": "accomplish", "label": {"Spanish": "Que le gustaria lograr con fisioterapia?", "English": "What would you like to accomplish with Physical Therapy:"}}, {"control": {"appearance": "minimal"}, "label": {"Spanish": "Como quiere recibir informacion para su fisioterapia?", "English": "How do you prefer to get Physical Therapy information:"}, "type": "select one", "name": "how_get_info", "choices": [{"name": "written", "label": {"Spanish": "escrito", "English": "written"}}, {"name": "verbal", "label": {"Spanish": "hablada", "English": "verbal"}}, {"name": "demonstrated", "label": {"Spanish": "demostracion", "English": "demonstration"}}]}, {"type": "text", "name": "comments", "label": {"Spanish": "Comentarios:", "English": "Additional comments:"}}, {"type": "text", "name": "sign", "label": {"Spanish": "Firmar:", "English": "Please Sign:"}}, {"type": "date", "name": "sign_date", "label": {"Spanish": "Fecha:", "English": "Date:"}}]}], "is_tracker": false, "user": 1, "is_public": false, "date_created": "2015-03-27T17:38:51", "id": "551595ab683da70bbc089657", "description": "Automatically created using intakeform_v4.xls"};
+  document.flat_fields = [{"control": {"appearance": "field-list"}, "type": "group", "name": "group_1", "children": [{"control": {"appearance": "minimal"}, "type": "text", "name": "name", "label": {"Spanish": "Nombre:", "English": "Name:"}}, {"control": {"appearance": "minimal"}, "type": "date", "name": "date", "label": {"Spanish": "Fecha:", "English": "Today\u2019s Date:"}}, {"control": {"appearance": "minimal"}, "type": "date", "name": "birthdate", "label": {"Spanish": "Fecha de Nacimiento:", "English": "Birth Date:"}}, {"control": {"appearance": "minimal"}, "label": {"Spanish": "Sexo:", "English": "Gender:"}, "type": "select one", "name": "genderlist", "choices": [{"name": "male", "label": {"Spanish": "Hombre", "English": "Male"}}, {"name": "female", "label": {"Spanish": "Mujer", "English": "Female"}}]}, {"control": {"appearance": "minimal"}, "type": "integer", "name": "weight", "label": {"Spanish": "Peso:", "English": "Weight:"}}, {"control": {"appearance": "minimal"}, "label": {"Spanish": "Estatura:", "English": "Height:"}, "type": "select one", "name": "height", "choices": [{"name": "h_1", "label": {"Spanish": "4'5''", "English": "4'5''"}}, {"name": "h_2", "label": {"Spanish": "4'6''", "English": "4'6''"}}, {"name": "h_3", "label": {"Spanish": "4'7''", "English": "4'7''"}}, {"name": "h_4", "label": {"Spanish": "4'8''", "English": "4'8''"}}, {"name": "h_5", "label": {"Spanish": "4'9''", "English": "4'9''"}}, {"name": "h_6", "label": {"Spanish": "4'10''", "English": "4'10''"}}, {"name": "h_7", "label": {"Spanish": "4'11''", "English": "4'11''"}}, {"name": "h_8", "label": {"Spanish": "5'0''", "English": "5'0''"}}, {"name": "h_9", "label": {"Spanish": "5'1''", "English": "5'1''"}}, {"name": "h_10", "label": {"Spanish": "5'2''", "English": "5'2''"}}, {"name": "h_11", "label": {"Spanish": "5'3''", "English": "5'3''"}}, {"name": "h_12", "label": {"Spanish": "5'4''", "English": "5'4''"}}, {"name": "h_13", "label": {"Spanish": "5'5''", "English": "5'5''"}}, {"name": "h_14", "label": {"Spanish": "5'6''", "English": "5'6''"}}, {"name": "h_15", "label": {"Spanish": "5'7''", "English": "5'7''"}}, {"name": "h_16", "label": {"Spanish": "5'8''", "English": "5'8''"}}, {"name": "h_17", "label": {"Spanish": "5'9''", "English": "5'9''"}}, {"name": "h_18", "label": {"Spanish": "5'10''", "English": "5'10''"}}, {"name": "h_19", "label": {"Spanish": "5'11''", "English": "5'11''"}}, {"name": "h_20", "label": {"Spanish": "6'0''", "English": "6'0''"}}, {"name": "h_21", "label": {"Spanish": "6'1''", "English": "6'1''"}}, {"name": "h_22", "label": {"Spanish": "6'2''", "English": "6'2''"}}, {"name": "h_23", "label": {"Spanish": "6'3''", "English": "6'3''"}}, {"name": "h_24", "label": {"Spanish": "6'4''", "English": "6'4''"}}, {"name": "h_25", "label": {"Spanish": "6'5''", "English": "6'5''"}}, {"name": "h_26", "label": {"Spanish": "6'6''", "English": "6'6''"}}, {"name": "h_27", "label": {"Spanish": "6'7''", "English": "6'7''"}}]}, {"control": {"appearance": "minimal"}, "bind": {"constraint": "${age} > 0"}, "type": "integer", "name": "age", "label": {"Spanish": "Edad:", "English": "Age:"}}, {"control": {"appearance": "minimal"}, "type": "text", "name": "ptID", "label": {"Spanish": "Numero de Identificacion:", "English": "Patient I.D:"}}, {"control": {"appearance": "minimal"}, "label": {"Spanish": "SITUACION LABORAL:", "English": "OCCUPATION STATUS:"}, "type": "select one", "name": "occupation_list", "choices": [{"name": "ft", "label": {"Spanish": "tiempo completo", "English": "full-time"}}, {"name": "pt", "label": {"Spanish": "tiempo parcial", "English": "part-time"}}, {"name": "student", "label": {"Spanish": "estudiante", "English": "student"}}, {"name": "rt", "label": {"Spanish": "retirado", "English": "retired"}}, {"name": "unemploy", "label": {"Spanish": "desempleado", "English": "not employed"}}, {"name": "injured", "label": {"Spanish": "no trabajo por dano", "English": "not working due to injury"}}, {"name": "disability", "label": {"Spanish": "discapacidad", "English": "on disability due to injury or other condition"}}]}, {"control": {"appearance": "minimal"}, "label": {"Spanish": "Requisites de Trabajo", "English": "Occupation Requirements:"}, "type": "select all that apply", "name": "occupation_reqs", "choices": [{"name": "repet", "label": {"Spanish": "movimiento repetido:", "English": "repetitive motions"}}, {"name": "walk", "label": {"Spanish": "caminando", "English": "walking"}}, {"name": "lift", "label": {"Spanish": "levantar", "English": "lifting"}}, {"name": "kneel", "label": {"Spanish": "arrodillado", "English": "kneeling"}}, {"name": "carry", "label": {"Spanish": "cargando", "English": "carrying"}}, {"name": "sit", "label": {"Spanish": "sentado", "English": "sitting"}}, {"name": "stand", "label": {"Spanish": "estar parado", "English": "standing"}}, {"name": "otherRQ", "label": {"Spanish": "otra:", "English": "other"}}]}, {"control": {"appearance": "minimal"}, "type": "text", "name": "other_OCRQ", "label": {"Spanish": "otra:", "English": "if other:"}}, {"control": {"appearance": "minimal"}, "label": {"Spanish": "Tiene seguro?", "English": "Do you currently have insurance:"}, "type": "select one", "name": "have_insurance", "choices": [{"name": "no", "label": {"Spanish": "No", "English": "No"}}, {"name": "yes", "label": {"Spanish": "Yes", "English": "Yes"}}]}, {"control": {"appearance": "minimal"}, "type": "text", "name": "insuranceYes", "label": {"Spanish": "En caso afirmativo:", "English": "If yes:"}}, {"control": {"appearance": "minimal"}, "type": "text", "name": "whyPT", "label": {"Spanish": "Para que necesita fisioterapia?", "English": "Why do you seek Physical Therapy today:"}}, {"control": {"appearance": "minimal"}, "type": "text", "name": "whenStart", "label": {"Spanish": "Cuando empezo su problema?", "English": "When did the problem start:"}}, {"control": {"appearance": "minimal"}, "type": "text", "name": "wasInjury", "label": {"Spanish": "Se dano en una manera?", "English": "Was there an injury:"}}, {"control": {"appearance": "minimal"}, "type": "text", "name": "who_referred", "label": {"Spanish": "Quien le refiere a fisioterapia?", "English": "Who referred you to Physical Therapy:"}}, {"control": {"appearance": "minimal"}, "label": {"Spanish": "Alguien mas le ha ayudado?", "English": "Has another provider treated this problem:"}, "type": "select one", "name": "another_treat", "choices": [{"name": "no", "label": {"Spanish": "No", "English": "No"}}, {"name": "yes", "label": {"Spanish": "Yes", "English": "Yes"}}]}, {"control": {"appearance": "minimal"}, "type": "text", "name": "lastSeen", "label": {"Spanish": "cuando le vio:", "English": "Last seen:"}}, {"control": {"appearance": "minimal"}, "label": {"Spanish": "DOLOR/SINTOMA:", "English": "PAIN/SYMPTOMS:"}, "type": "select one", "name": "pain_scale", "choices": [{"name": "ps_1", "label": {"Spanish": "0 - no dolor", "English": "0 - no pain"}}, {"name": "ps_2", "label": {"Spanish": "1-2- poco de dolor", "English": "1-2 - minimal pain"}}, {"name": "ps_3", "label": {"Spanish": "3-4 - dolor moderado", "English": "3-4 - moderate pain"}}, {"name": "ps_4", "label": {"Spanish": "5-6 - mucho dolor", "English": "5-6 - painful"}}, {"name": "ps_5", "label": {"Spanish": "7-8 - dolor severo", "English": "7-8 - very painful"}}, {"name": "ps_6", "label": {"Spanish": "9-10 - dolor insoportable", "English": "9-10 - severe pain"}}]}, {"control": {"appearance": "minimal"}, "label": {"Spanish": "Que actividades le hace dolor?", "English": "Which activities are limited due to your problem? :"}, "type": "select all that apply", "name": "limited_activities", "choices": [{"name": "walking", "label": {"Spanish": "caminando", "English": "walking"}}, {"name": "lifting", "label": {"Spanish": "levantar", "English": "lifting"}}, {"name": "sleeping", "label": {"Spanish": "dormir", "English": "sleeping"}}, {"name": "working", "label": {"Spanish": "empleo", "English": "work"}}, {"name": "sitting", "label": {"Spanish": "sentado", "English": "sitting"}}, {"name": "standing", "label": {"Spanish": "estar parado", "English": "standing"}}, {"name": "exercising", "label": {"Spanish": "ejercicio", "English": "exercise"}}, {"name": "housework", "label": {"Spanish": "tareas de la casa", "English": "housework"}}, {"name": "otherLimit", "label": {"Spanish": "otra", "English": "other"}}]}, {"control": {"appearance": "minimal"}, "type": "text", "name": "other_limit_act", "label": {"Spanish": "otra:", "English": "if other:"}}, {"control": {"appearance": "minimal"}, "label": {"Spanish": "Cual es su quejo principal?", "English": "What are your primary complaints :"}, "type": "select all that apply", "name": "primary_complaint", "choices": [{"name": "decreased", "label": {"Spanish": "movimiento limitado", "English": "decreased motion"}}, {"name": "stiff", "label": {"Spanish": "rigidez", "English": "stiffness"}}, {"name": "numb", "label": {"Spanish": "entumecimiento", "English": "numbness"}}, {"name": "spas", "label": {"Spanish": "espasmo", "English": "spasm"}}, {"name": "swell", "label": {"Spanish": "hinchado", "English": "swelling"}}, {"name": "unstable", "label": {"Spanish": "inestabilidad", "English": "instability"}}, {"name": "pain", "label": {"Spanish": "dolor", "English": "pain"}}, {"name": "weak", "label": {"Spanish": "debilidad", "English": "weakness"}}, {"name": "balance", "label": {"Spanish": "falta de equilibrio", "English": "poor balance"}}, {"name": "otherComp", "label": {"Spanish": "otra", "English": "other"}}]}, {"control": {"appearance": "minimal"}, "type": "text", "name": "other_prim_comp", "label": {"Spanish": "otra:", "English": "if other:"}}, {"control": {"appearance": "minimal"}, "label": {"Spanish": "Que palabras describen su dolor:", "English": "What words would you use to describe your pain :"}, "type": "select all that apply", "name": "describe_pain", "choices": [{"name": "sharp", "label": {"Spanish": "dolor agudo", "English": "sharp"}}, {"name": "throb", "label": {"Spanish": "punzante", "English": "throbbing"}}, {"name": "ache", "label": {"Spanish": "dolorido", "English": "aching"}}, {"name": "burn", "label": {"Spanish": "ardiente", "English": "burning"}}, {"name": "deep", "label": {"Spanish": "profundo", "English": "deep"}}, {"name": "sting", "label": {"Spanish": "picadura", "English": "stinging"}}, {"name": "constant", "label": {"Spanish": "constante", "English": "constant"}}, {"name": "otherPain", "label": {"Spanish": "otra", "English": "other"}}]}, {"control": {"appearance": "minimal"}, "type": "text", "name": "other_pain", "label": {"Spanish": "otra:", "English": "if other:"}}, {"control": {"appearance": "minimal"}, "label": {"Spanish": "Hace ejercicio?", "English": "Do you exercise regularly:"}, "type": "select one", "name": "regular_exercise", "choices": [{"name": "everyday", "label": {"Spanish": "cada dia", "English": "everyday"}}, {"name": "atWork", "label": {"Spanish": "todo el dia con trabajo", "English": "all day at work"}}, {"name": "sometimes", "label": {"Spanish": "a veces", "English": "sometimes"}}, {"name": "never", "label": {"Spanish": "nunca", "English": "never"}}]}, {"control": {"appearance": "minimal"}, "label": {"Spanish": "HISTORIAL MEDICO/CIRUGIA):", "English": "MEDICAL/SURGICAL HISTORY:"}, "type": "select all that apply", "name": "medical_history", "choices": [{"name": "hypertension", "label": {"Spanish": "Hipertension", "English": "High blood pressure"}}, {"name": "heartDisease", "label": {"Spanish": "Enfermedad del Corazon", "English": "Heart disease"}}, {"name": "smoke", "label": {"Spanish": "Fumar", "English": "Smoker"}}, {"name": "stroke", "label": {"Spanish": "Accidente Cerbrovascular", "English": "History of stroke"}}, {"name": "cholesterol", "label": {"Spanish": "Cholesterol Alto", "English": "High cholesterol"}}, {"name": "anemia", "label": {"Spanish": "Anemia", "English": "Anemia"}}, {"name": "bleeding", "label": {"Spanish": "Trastorno de la Coagulacion", "English": "Bleeding disorder"}}, {"name": "none", "label": {"Spanish": "nada", "English": "None"}}, {"name": "headache", "label": {"Spanish": "Dolor de cabeza grave", "English": "Severe headaches"}}, {"name": "cerv", "label": {"Spanish": "Trastorno de cuello", "English": "Cervical spine disorder"}}, {"name": "lumbar", "label": {"Spanish": "Trastorno de espalda", "English": "Lumbar spine disorder"}}, {"name": "osteo", "label": {"Spanish": "Osteoporosis", "English": "Osteoporosis"}}, {"name": "prego", "label": {"Spanish": "Embarazada", "English": "Pregnant"}}, {"name": "fracture", "label": {"Spanish": "Fractura", "English": "Fractures"}}, {"name": "nerve", "label": {"Spanish": "Dano de nervio", "English": "Nerve injury"}}, {"name": "diabetes", "label": {"Spanish": "Diabetes", "English": "Diabetes"}}, {"name": "alcohol", "label": {"Spanish": "Abuso de alcohol o drogas", "English": "Alcohol or drug abuse"}}, {"name": "depression", "label": {"Spanish": "Depresion", "English": "Depression"}}, {"name": "renal", "label": {"Spanish": "Enfermedad renal", "English": "Kidney disease"}}, {"name": "thyroid", "label": {"Spanish": "Enfermedad tiroides", "English": "Thyroid disease"}}, {"name": "stomach", "label": {"Spanish": "Enfermedad de estomago", "English": "Stomach or bowel disease"}}, {"name": "mental", "label": {"Spanish": "Enfermedad psicologica", "English": "Mental health problems"}}]}, {"control": {"appearance": "minimal"}, "type": "integer", "name": "numPacks", "label": {"Spanish": "Fumar, cuantos cada dia:", "English": "Smoke packs a day:"}}, {"control": {"appearance": "minimal"}, "type": "integer", "name": "numWeeks", "label": {"Spanish": "n\u00famero de semanas de embarazo", "English": "# of weeks pregnant :"}}, {"control": {"appearance": "minimal"}, "type": "text", "name": "medications", "label": {"Spanish": "Medicaciones que toma:", "English": "Medications:"}}, {"control": {"appearance": "minimal"}, "type": "text", "name": "allergies", "label": {"Spanish": "allergies (Alergias):", "English": "Medication allergies:"}}, {"control": {"appearance": "minimal"}, "type": "text", "name": "accomplish", "label": {"Spanish": "Que le gustaria lograr con fisioterapia?", "English": "What would you like to accomplish with Physical Therapy:"}}, {"control": {"appearance": "minimal"}, "label": {"Spanish": "Como quiere recibir informacion para su fisioterapia?", "English": "How do you prefer to get Physical Therapy information:"}, "type": "select one", "name": "how_get_info", "choices": [{"name": "written", "label": {"Spanish": "escrito", "English": "written"}}, {"name": "verbal", "label": {"Spanish": "hablada", "English": "verbal"}}, {"name": "demonstrated", "label": {"Spanish": "demostracion", "English": "demonstration"}}]}, {"type": "text", "name": "comments", "label": {"Spanish": "Comentarios:", "English": "Additional comments:"}}, {"type": "text", "name": "sign", "label": {"Spanish": "Firmar:", "English": "Please Sign:"}}, {"type": "date", "name": "sign_date", "label": {"Spanish": "Fecha:", "English": "Date:"}}]}, {"control": {"appearance": "minimal"}, "type": "text", "name": "name", "label": {"Spanish": "Nombre:", "English": "Name:"}}, {"control": {"appearance": "minimal"}, "type": "date", "name": "date", "label": {"Spanish": "Fecha:", "English": "Today\u2019s Date:"}}, {"control": {"appearance": "minimal"}, "type": "date", "name": "birthdate", "label": {"Spanish": "Fecha de Nacimiento:", "English": "Birth Date:"}}, {"control": {"appearance": "minimal"}, "label": {"Spanish": "Sexo:", "English": "Gender:"}, "type": "select one", "name": "genderlist", "choices": [{"name": "male", "label": {"Spanish": "Hombre", "English": "Male"}}, {"name": "female", "label": {"Spanish": "Mujer", "English": "Female"}}]}, {"control": {"appearance": "minimal"}, "type": "integer", "name": "weight", "label": {"Spanish": "Peso:", "English": "Weight:"}}, {"control": {"appearance": "minimal"}, "label": {"Spanish": "Estatura:", "English": "Height:"}, "type": "select one", "name": "height", "choices": [{"name": "h_1", "label": {"Spanish": "4'5''", "English": "4'5''"}}, {"name": "h_2", "label": {"Spanish": "4'6''", "English": "4'6''"}}, {"name": "h_3", "label": {"Spanish": "4'7''", "English": "4'7''"}}, {"name": "h_4", "label": {"Spanish": "4'8''", "English": "4'8''"}}, {"name": "h_5", "label": {"Spanish": "4'9''", "English": "4'9''"}}, {"name": "h_6", "label": {"Spanish": "4'10''", "English": "4'10''"}}, {"name": "h_7", "label": {"Spanish": "4'11''", "English": "4'11''"}}, {"name": "h_8", "label": {"Spanish": "5'0''", "English": "5'0''"}}, {"name": "h_9", "label": {"Spanish": "5'1''", "English": "5'1''"}}, {"name": "h_10", "label": {"Spanish": "5'2''", "English": "5'2''"}}, {"name": "h_11", "label": {"Spanish": "5'3''", "English": "5'3''"}}, {"name": "h_12", "label": {"Spanish": "5'4''", "English": "5'4''"}}, {"name": "h_13", "label": {"Spanish": "5'5''", "English": "5'5''"}}, {"name": "h_14", "label": {"Spanish": "5'6''", "English": "5'6''"}}, {"name": "h_15", "label": {"Spanish": "5'7''", "English": "5'7''"}}, {"name": "h_16", "label": {"Spanish": "5'8''", "English": "5'8''"}}, {"name": "h_17", "label": {"Spanish": "5'9''", "English": "5'9''"}}, {"name": "h_18", "label": {"Spanish": "5'10''", "English": "5'10''"}}, {"name": "h_19", "label": {"Spanish": "5'11''", "English": "5'11''"}}, {"name": "h_20", "label": {"Spanish": "6'0''", "English": "6'0''"}}, {"name": "h_21", "label": {"Spanish": "6'1''", "English": "6'1''"}}, {"name": "h_22", "label": {"Spanish": "6'2''", "English": "6'2''"}}, {"name": "h_23", "label": {"Spanish": "6'3''", "English": "6'3''"}}, {"name": "h_24", "label": {"Spanish": "6'4''", "English": "6'4''"}}, {"name": "h_25", "label": {"Spanish": "6'5''", "English": "6'5''"}}, {"name": "h_26", "label": {"Spanish": "6'6''", "English": "6'6''"}}, {"name": "h_27", "label": {"Spanish": "6'7''", "English": "6'7''"}}]}, {"control": {"appearance": "minimal"}, "bind": {"constraint": "${age} > 0"}, "type": "integer", "name": "age", "label": {"Spanish": "Edad:", "English": "Age:"}}, {"control": {"appearance": "minimal"}, "type": "text", "name": "ptID", "label": {"Spanish": "Numero de Identificacion:", "English": "Patient I.D:"}}, {"control": {"appearance": "minimal"}, "label": {"Spanish": "SITUACION LABORAL:", "English": "OCCUPATION STATUS:"}, "type": "select one", "name": "occupation_list", "choices": [{"name": "ft", "label": {"Spanish": "tiempo completo", "English": "full-time"}}, {"name": "pt", "label": {"Spanish": "tiempo parcial", "English": "part-time"}}, {"name": "student", "label": {"Spanish": "estudiante", "English": "student"}}, {"name": "rt", "label": {"Spanish": "retirado", "English": "retired"}}, {"name": "unemploy", "label": {"Spanish": "desempleado", "English": "not employed"}}, {"name": "injured", "label": {"Spanish": "no trabajo por dano", "English": "not working due to injury"}}, {"name": "disability", "label": {"Spanish": "discapacidad", "English": "on disability due to injury or other condition"}}]}, {"control": {"appearance": "minimal"}, "label": {"Spanish": "Requisites de Trabajo", "English": "Occupation Requirements:"}, "type": "select all that apply", "name": "occupation_reqs", "choices": [{"name": "repet", "label": {"Spanish": "movimiento repetido:", "English": "repetitive motions"}}, {"name": "walk", "label": {"Spanish": "caminando", "English": "walking"}}, {"name": "lift", "label": {"Spanish": "levantar", "English": "lifting"}}, {"name": "kneel", "label": {"Spanish": "arrodillado", "English": "kneeling"}}, {"name": "carry", "label": {"Spanish": "cargando", "English": "carrying"}}, {"name": "sit", "label": {"Spanish": "sentado", "English": "sitting"}}, {"name": "stand", "label": {"Spanish": "estar parado", "English": "standing"}}, {"name": "otherRQ", "label": {"Spanish": "otra:", "English": "other"}}]}, {"control": {"appearance": "minimal"}, "type": "text", "name": "other_OCRQ", "label": {"Spanish": "otra:", "English": "if other:"}}, {"control": {"appearance": "minimal"}, "label": {"Spanish": "Tiene seguro?", "English": "Do you currently have insurance:"}, "type": "select one", "name": "have_insurance", "choices": [{"name": "no", "label": {"Spanish": "No", "English": "No"}}, {"name": "yes", "label": {"Spanish": "Yes", "English": "Yes"}}]}, {"control": {"appearance": "minimal"}, "type": "text", "name": "insuranceYes", "label": {"Spanish": "En caso afirmativo:", "English": "If yes:"}}, {"control": {"appearance": "minimal"}, "type": "text", "name": "whyPT", "label": {"Spanish": "Para que necesita fisioterapia?", "English": "Why do you seek Physical Therapy today:"}}, {"control": {"appearance": "minimal"}, "type": "text", "name": "whenStart", "label": {"Spanish": "Cuando empezo su problema?", "English": "When did the problem start:"}}, {"control": {"appearance": "minimal"}, "type": "text", "name": "wasInjury", "label": {"Spanish": "Se dano en una manera?", "English": "Was there an injury:"}}, {"control": {"appearance": "minimal"}, "type": "text", "name": "who_referred", "label": {"Spanish": "Quien le refiere a fisioterapia?", "English": "Who referred you to Physical Therapy:"}}, {"control": {"appearance": "minimal"}, "label": {"Spanish": "Alguien mas le ha ayudado?", "English": "Has another provider treated this problem:"}, "type": "select one", "name": "another_treat", "choices": [{"name": "no", "label": {"Spanish": "No", "English": "No"}}, {"name": "yes", "label": {"Spanish": "Yes", "English": "Yes"}}]}, {"control": {"appearance": "minimal"}, "type": "text", "name": "lastSeen", "label": {"Spanish": "cuando le vio:", "English": "Last seen:"}}, {"control": {"appearance": "minimal"}, "label": {"Spanish": "DOLOR/SINTOMA:", "English": "PAIN/SYMPTOMS:"}, "type": "select one", "name": "pain_scale", "choices": [{"name": "ps_1", "label": {"Spanish": "0 - no dolor", "English": "0 - no pain"}}, {"name": "ps_2", "label": {"Spanish": "1-2- poco de dolor", "English": "1-2 - minimal pain"}}, {"name": "ps_3", "label": {"Spanish": "3-4 - dolor moderado", "English": "3-4 - moderate pain"}}, {"name": "ps_4", "label": {"Spanish": "5-6 - mucho dolor", "English": "5-6 - painful"}}, {"name": "ps_5", "label": {"Spanish": "7-8 - dolor severo", "English": "7-8 - very painful"}}, {"name": "ps_6", "label": {"Spanish": "9-10 - dolor insoportable", "English": "9-10 - severe pain"}}]}, {"control": {"appearance": "minimal"}, "label": {"Spanish": "Que actividades le hace dolor?", "English": "Which activities are limited due to your problem? :"}, "type": "select all that apply", "name": "limited_activities", "choices": [{"name": "walking", "label": {"Spanish": "caminando", "English": "walking"}}, {"name": "lifting", "label": {"Spanish": "levantar", "English": "lifting"}}, {"name": "sleeping", "label": {"Spanish": "dormir", "English": "sleeping"}}, {"name": "working", "label": {"Spanish": "empleo", "English": "work"}}, {"name": "sitting", "label": {"Spanish": "sentado", "English": "sitting"}}, {"name": "standing", "label": {"Spanish": "estar parado", "English": "standing"}}, {"name": "exercising", "label": {"Spanish": "ejercicio", "English": "exercise"}}, {"name": "housework", "label": {"Spanish": "tareas de la casa", "English": "housework"}}, {"name": "otherLimit", "label": {"Spanish": "otra", "English": "other"}}]}, {"control": {"appearance": "minimal"}, "type": "text", "name": "other_limit_act", "label": {"Spanish": "otra:", "English": "if other:"}}, {"control": {"appearance": "minimal"}, "label": {"Spanish": "Cual es su quejo principal?", "English": "What are your primary complaints :"}, "type": "select all that apply", "name": "primary_complaint", "choices": [{"name": "decreased", "label": {"Spanish": "movimiento limitado", "English": "decreased motion"}}, {"name": "stiff", "label": {"Spanish": "rigidez", "English": "stiffness"}}, {"name": "numb", "label": {"Spanish": "entumecimiento", "English": "numbness"}}, {"name": "spas", "label": {"Spanish": "espasmo", "English": "spasm"}}, {"name": "swell", "label": {"Spanish": "hinchado", "English": "swelling"}}, {"name": "unstable", "label": {"Spanish": "inestabilidad", "English": "instability"}}, {"name": "pain", "label": {"Spanish": "dolor", "English": "pain"}}, {"name": "weak", "label": {"Spanish": "debilidad", "English": "weakness"}}, {"name": "balance", "label": {"Spanish": "falta de equilibrio", "English": "poor balance"}}, {"name": "otherComp", "label": {"Spanish": "otra", "English": "other"}}]}, {"control": {"appearance": "minimal"}, "type": "text", "name": "other_prim_comp", "label": {"Spanish": "otra:", "English": "if other:"}}, {"control": {"appearance": "minimal"}, "label": {"Spanish": "Que palabras describen su dolor:", "English": "What words would you use to describe your pain :"}, "type": "select all that apply", "name": "describe_pain", "choices": [{"name": "sharp", "label": {"Spanish": "dolor agudo", "English": "sharp"}}, {"name": "throb", "label": {"Spanish": "punzante", "English": "throbbing"}}, {"name": "ache", "label": {"Spanish": "dolorido", "English": "aching"}}, {"name": "burn", "label": {"Spanish": "ardiente", "English": "burning"}}, {"name": "deep", "label": {"Spanish": "profundo", "English": "deep"}}, {"name": "sting", "label": {"Spanish": "picadura", "English": "stinging"}}, {"name": "constant", "label": {"Spanish": "constante", "English": "constant"}}, {"name": "otherPain", "label": {"Spanish": "otra", "English": "other"}}]}, {"control": {"appearance": "minimal"}, "type": "text", "name": "other_pain", "label": {"Spanish": "otra:", "English": "if other:"}}, {"control": {"appearance": "minimal"}, "label": {"Spanish": "Hace ejercicio?", "English": "Do you exercise regularly:"}, "type": "select one", "name": "regular_exercise", "choices": [{"name": "everyday", "label": {"Spanish": "cada dia", "English": "everyday"}}, {"name": "atWork", "label": {"Spanish": "todo el dia con trabajo", "English": "all day at work"}}, {"name": "sometimes", "label": {"Spanish": "a veces", "English": "sometimes"}}, {"name": "never", "label": {"Spanish": "nunca", "English": "never"}}]}, {"control": {"appearance": "minimal"}, "label": {"Spanish": "HISTORIAL MEDICO/CIRUGIA):", "English": "MEDICAL/SURGICAL HISTORY:"}, "type": "select all that apply", "name": "medical_history", "choices": [{"name": "hypertension", "label": {"Spanish": "Hipertension", "English": "High blood pressure"}}, {"name": "heartDisease", "label": {"Spanish": "Enfermedad del Corazon", "English": "Heart disease"}}, {"name": "smoke", "label": {"Spanish": "Fumar", "English": "Smoker"}}, {"name": "stroke", "label": {"Spanish": "Accidente Cerbrovascular", "English": "History of stroke"}}, {"name": "cholesterol", "label": {"Spanish": "Cholesterol Alto", "English": "High cholesterol"}}, {"name": "anemia", "label": {"Spanish": "Anemia", "English": "Anemia"}}, {"name": "bleeding", "label": {"Spanish": "Trastorno de la Coagulacion", "English": "Bleeding disorder"}}, {"name": "none", "label": {"Spanish": "nada", "English": "None"}}, {"name": "headache", "label": {"Spanish": "Dolor de cabeza grave", "English": "Severe headaches"}}, {"name": "cerv", "label": {"Spanish": "Trastorno de cuello", "English": "Cervical spine disorder"}}, {"name": "lumbar", "label": {"Spanish": "Trastorno de espalda", "English": "Lumbar spine disorder"}}, {"name": "osteo", "label": {"Spanish": "Osteoporosis", "English": "Osteoporosis"}}, {"name": "prego", "label": {"Spanish": "Embarazada", "English": "Pregnant"}}, {"name": "fracture", "label": {"Spanish": "Fractura", "English": "Fractures"}}, {"name": "nerve", "label": {"Spanish": "Dano de nervio", "English": "Nerve injury"}}, {"name": "diabetes", "label": {"Spanish": "Diabetes", "English": "Diabetes"}}, {"name": "alcohol", "label": {"Spanish": "Abuso de alcohol o drogas", "English": "Alcohol or drug abuse"}}, {"name": "depression", "label": {"Spanish": "Depresion", "English": "Depression"}}, {"name": "renal", "label": {"Spanish": "Enfermedad renal", "English": "Kidney disease"}}, {"name": "thyroid", "label": {"Spanish": "Enfermedad tiroides", "English": "Thyroid disease"}}, {"name": "stomach", "label": {"Spanish": "Enfermedad de estomago", "English": "Stomach or bowel disease"}}, {"name": "mental", "label": {"Spanish": "Enfermedad psicologica", "English": "Mental health problems"}}]}, {"control": {"appearance": "minimal"}, "type": "integer", "name": "numPacks", "label": {"Spanish": "Fumar, cuantos cada dia:", "English": "Smoke packs a day:"}}, {"control": {"appearance": "minimal"}, "type": "integer", "name": "numWeeks", "label": {"Spanish": "n\u00famero de semanas de embarazo", "English": "# of weeks pregnant :"}}, {"control": {"appearance": "minimal"}, "type": "text", "name": "medications", "label": {"Spanish": "Medicaciones que toma:", "English": "Medications:"}}, {"control": {"appearance": "minimal"}, "type": "text", "name": "allergies", "label": {"Spanish": "allergies (Alergias):", "English": "Medication allergies:"}}, {"control": {"appearance": "minimal"}, "type": "text", "name": "accomplish", "label": {"Spanish": "Que le gustaria lograr con fisioterapia?", "English": "What would you like to accomplish with Physical Therapy:"}}, {"control": {"appearance": "minimal"}, "label": {"Spanish": "Como quiere recibir informacion para su fisioterapia?", "English": "How do you prefer to get Physical Therapy information:"}, "type": "select one", "name": "how_get_info", "choices": [{"name": "written", "label": {"Spanish": "escrito", "English": "written"}}, {"name": "verbal", "label": {"Spanish": "hablada", "English": "verbal"}}, {"name": "demonstrated", "label": {"Spanish": "demostracion", "English": "demonstration"}}]}, {"type": "text", "name": "comments", "label": {"Spanish": "Comentarios:", "English": "Additional comments:"}}, {"type": "text", "name": "sign", "label": {"Spanish": "Firmar:", "English": "Please Sign:"}}, {"type": "date", "name": "sign_date", "label": {"Spanish": "Fecha:", "English": "Date:"}}];
+</script>
+
+<script src="Web_Entry_files/require.js"></script>
+<script type="text/javascript">
+  require([ '/static/js/common.js' ], function (common) {
+
+    require.config({
+      baseUrl: '/static/js/vendor'
+    });
+
+    require( [ 'app/webform/main' ] )
+  });
+</script>
+
+<script type="text/template" id="language-select">
+	<div class="bbm-modal__topbar">
+		<h3 class="bbm-modal__title">Select Language</h3>
+	</div>
+	<div class="bbm-modal__section">
+		<div class='control-group'>
+			<ul>
+			
+			</ul>
+		</div>
+	</div>
+	<div class="bbm-modal__bottombar">
+		<a href="#" class="btn btn-cancel">Cancel</a>
+		<a href="#" class="btn btn-primary">Choose</a>
+	</div>
+</script>
+
+
+
+
+
+</body></html>

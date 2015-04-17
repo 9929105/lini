@@ -13,12 +13,13 @@ router.register(r'MedicalService',MedicalServiceViewSet)
 router.register(r'Encounter',EncounterViewSet)
 router.register(r'Order',OrderViewSet)
 router.register(r'PriceHistory',PriceHistoryViewSet)
-
+router.register(r'PersonSearch',PersonViewSet)
 
 urlpatterns = patterns('',
     # Examples:
     # url(r'^$', 'lini.views.home', name='home'),
     # url(r'^blog/', include('blog.urls')),
+    url(r'^', include(router.urls)),
     url(r'^', include(router.urls)),
     url(r'^admin/', include(admin.site.urls)),
 #     url(r'^orderplacer/$', 'lini.views.index'),

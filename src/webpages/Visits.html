@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html>
+<meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+<meta content="utf-8" http-equiv="encoding">
+<head>
+<style type="text/css" media="screen">
+
+table{
+border-collapse:collapse;
+border:1px solid #FF0000;
+}
+
+table td{
+border:1px solid #FF0000;
+}
+</style>
+<script type="text/javascript">
+
+var allResults
+var curlink = "http://127.0.0.1:8000/Encounter/?format=json";
+var curobj = {};
+var curPatient = {};
+function getResults(){
+ 	var xmlhttp = new XMLHttpRequest();
+	var url = curlink;
+		
+	xmlhttp.onreadystatechange=function() {
+	    if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+	    	parseResponse(xmlhttp.responseText);
+	    }
+	}
+	xmlhttp.open("GET", url, true);
+	xmlhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+	xmlhttp.send(); 
+	
+}
+
+function getPatientList(){
+ 	var xmlhttp = new XMLHttpRequest();
+	var url = "http://127.0.0.1:8000/PersonSearch/?format=json";;
+		
+	xmlhttp.onreadystatechange=function() {
+	    if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+	    	parsePatientResponse(xmlhttp.responseText);
+	    }
+	}
+	xmlhttp.open("GET", url, true);
+	xmlhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+	xmlhttp.send(); 
+	
+}
+function addEncounter_OnClick(){
+	var xmlhttp = new XMLHttpRequest();
+	var url = "http://127.0.0.1:8000/Encounter/";
+	updateObject_OnClick();
+}
+
+function updateObject_OnClick(){
+ 	var xmlhttp = new XMLHttpRequest();
+	var url = "http://127.0.0.1:8000/Encounter/";
+	
+	var obj ={}
+	if (curobj.id > 0) {
+		obj = curobj
+		url = url+curobj.id+"/?format=json"
+		xmlhttp.open("PUT", url, true);
+	} else {
+		obj.patient=curPatient
+		obj.provider=curPatient
+		xmlhttp.open("POST", url, true);
+	}
+	
+	xmlhttp.onreadystatechange=function() {
+	    if (xmlhttp.readyState == 4) {
+	    	parsePostResponse(xmlhttp.responseText);
+	    }
+	}
+
+
+	xmlhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+	
+	
+	obj.end_effective_td = Date("2199-12-31T23:59:00"); 
+	obj.created_by = 1;
+	obj.modified_by = 1;
+	obj.encntr_dt = document.getElementById("visit_dt").value
+    //"created_by": 1,
+    //"modified_by": 1}
+	
+	obj.patient.name_last = document.getElementById("name_last").value;
+	obj.patient.name_first = document.getElementById("name_first").value;
+	obj.patient.sex = ((document.getElementById("male").checked)? "male" : "female");
+	
+	obj.patient.birthdate = document.getElementById("birthdate").value;
+//	obj.patient.identifier = document.getElementById("identifier").value;
+	xmlhttp.send(JSON.stringify(obj)); 
+	
+}
+function parsePostResponse(response) {
+
+	var obj = JSON.parse(response)
+	parseResults(obj["results"])
+	if (obj["next"] != null) {
+		curlink = obj["next"]	
+	}
+	
+}
+
+function parseResponse(response) {
+	
+	var obj = JSON.parse(response)
+	parseResults(obj["results"])
+	if (obj["next"] != null) {
+		curlink = obj["next"]	
+	}
+	
+}
+
+function parsePatientResponse(response) {
+	
+	var obj = JSON.parse(response)
+	parsePatientResults(obj["results"])
+	if (obj["next"] != null) {
+		curlink = obj["next"]	
+	}
+	
+}
+
+function selectObject(obj)
+{
+
+  curobj = obj;
+  document.getElementById("visit_dt").value = curobj["encntr_dt"];
+  selectPatient(obj["patient"]);
+  
+}
+
+function selectPatient(pat)
+{
+
+  curPatient = pat;
+  document.getElementById("name_last").value = pat["name_last"];
+  document.getElementById("name_first").value = pat["name_first"];
+
+  document.getElementById("birthdate").value = pat["birthdate"];  
+  
+
+  if (pat["sex"] == "male"){
+	  document.getElementById("male").checked = true;
+	} else if (pat["sex"] == "female"){
+	 document.getElementById("female").checked = true;
+	}
+  
+}
+
+function parseResults(objArray) {
+	allResults = objArray
+	document.getElementById('result_table').innerHTML = "";
+	var result_table = document.getElementById('result_table');
+	var tr = document.createElement("tr");
+	tr.innerHTML = "<td>ID</td><td>Last Name</td><td>First Name</td><td>Sex</td><td>Visit Date</td><td>Provider</td>";
+
+	result_table.appendChild(tr);
+		
+	for (idx in objArray){
+		var obj = objArray[idx];
+		
+		tr = document.createElement("tr");
+		
+		tr.refObject = obj;
+		tr.onclick = function() {
+			selectObject(this.refObject);
+		}
+		tr.innerHTML +=
+				"<td>"+obj["id"]+"</td>"+
+			   	"<td>"+obj["patient"]["name_last"]+"</td>"+
+				"<td>"+obj["patient"]["name_first"]+"</td>"+
+				"<td>"+obj["patient"]["sex"]+"</td>"+
+				"<td>"+obj["encntr_dt"]+"</td>"+
+				"<td>"+obj["provider"]+"</td>";
+		result_table.appendChild(tr);
+	}	
+}
+
+function parsePatientResults(objArray) {
+	allResults = objArray
+	document.getElementById('patient_table').innerHTML = "";
+	var result_table = document.getElementById('patient_table');
+	var tr = document.createElement("tr");
+	tr.innerHTML = "<td>ID</td><td>Last Name</td><td>First Name</td><td>Sex</td><td>Birthdate</td><td>Identifier</td>";
+
+	result_table.appendChild(tr);
+		
+	for (idx in objArray){
+		var obj = objArray[idx];
+		
+		tr = document.createElement("tr");
+		
+		tr.refObject = obj;
+		tr.onclick = function() {
+			selectPatient(this.refObject);
+		}
+		tr.innerHTML +=
+				"<td>"+obj["id"]+"</td>"+
+			   	"<td>"+obj["name_last"]+"</td>"+
+				"<td>"+obj["name_first"]+"</td>"+
+				"<td>"+obj["sex"]+"</td>"+
+				"<td>"+obj["birthdate"]+"</td>"+
+				"<td>"+obj["identifier"]+"</td>";
+		result_table.appendChild(tr);
+	}	
+}
+
+
+
+
+</script>
+</head>
+<body>
+
+
+<h1>Encounter Search</h1>
+
+<div id="Patient Browser">
+	<p> Patient List </p>
+		<button type="button" onclick="getPatientList()">Get All Patients</button>
+	<table id="patient_table"></table>
+</div>
+
+<div id="Search Area">
+	<p> Encounter Search </p>
+	
+	Last Name: <input id="name_last" type="text"> <br> 
+	First Name: <input id="name_first" type="text"> <br>
+	Birthdate: <input id="birthdate" type="date"> <br>
+	<div id="sex">
+	Sex: <input type="radio" id = "male" name="sex" value="male">Male
+		<input type="radio" id = "female" name="sex" value="female">Female
+	</div> <br>
+	
+	Visit Date: <input id="visit_dt" type="date"> <br>	
+	<br>
+	<button type="button" onclick="updateObject_OnClick()">Apply</button> 
+	<button type="button" onclick="addEncounter_OnClick()">Add Encounter</button> <br>
+</div>
+
+<br>
+<div id="Encounter Browser">
+	<button type="button" onclick="getResults()">Get Encounters</button>
+	<p id="resulting_output"> Output results</p>
+</div>
+<div id="Result Display Area">
+	 <a id="next_page">Next Page</a> 
+	<table id="result_table">
+	</table>
+</div>
+
+
+
+</body>
+</html>
+

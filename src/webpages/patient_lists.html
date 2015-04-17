@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <title>user / Patient List</title>
+
+    <link rel="shortcut icon" href="http://127.0.0.1:8000/static/favicon/favicon.ico">
+    <link rel="icon" type="image/png" href="http://127.0.0.1:8000/static/favicon/favicon.128.png">
+
+    <link href="patient_lists_files/font-awesome.css" rel="stylesheet">
+    <link href="patient_lists_files/layout.css" rel="stylesheet">
+    <!--[if IE 7]>
+    <link href='/static/css/font-awesome-ie7.min.css' rel='styslesheet'>
+    <![endif]-->
+    
+<link rel="stylesheet" type="text/css" href="patient_lists_files/nv.css">
+<link rel="stylesheet" type="text/css" href="patient_lists_files/leaflet.css">
+<link rel="stylesheet" type="text/css" href="patient_lists_files/MarkerCluster.css">
+<link rel="stylesheet" type="text/css" href="patient_lists_files/MarkerCluster_002.css">
+
+<script src="patient_lists_files/common.js" data-requiremodule="/static/js/common.js" data-requirecontext="_" async="" charset="utf-8" type="text/javascript"></script></head>
+
+
+
+<body>
+    
+    <div class="topbar-wrapper">
+    
+        <div class="container">
+            <div class="logo">
+                <div>
+                    <!-- <a href="http://127.0.0.1:8000/">
+                        <img src="patient_lists_files/keep-logo.png" width="48">
+                    </a>
+                     -->
+                </div>
+            </div>
+            <div class="topbar">
+                
+    
+                <div class="six columns search-bar">
+                    <div style="padding-top:16px;">
+                        <input style="margin:0;width:100%;" placeholder="Search Data" type="text">
+                    </div>
+                </div>
+
+                
+
+                <div class="six columns offset-by-four user-panel">
+                    <h4><a href="http://127.0.0.1:8000/">user</a></h4>&nbsp;|
+                </div>
+                
+            </div>
+        </div>
+    </div>
+    
+<!-- -
+<div id="modal">
+<div class="bbm-wrapper" style="display: block;"><div style="opacity: 1;" class="bbm-modal bbm-modal--open">
+  <div class="bbm-modal__topbar"></div>
+  <div class="bbm-modal__section">
+    
+
+    <div class="control-group">
+      <h4>Details</h4>
+      <table class="table">
+        
+          <tbody><tr>
+            <td>name</td><td>gesdg</td>
+          </tr>
+        
+          <tr>
+            <td>date</td><td></td>
+          </tr>
+        
+          <tr>
+            <td>birthdate</td><td></td>
+          </tr>
+        
+          <tr>
+            <td>genderlist</td><td>male</td>
+          </tr>
+        
+        
+      </tbody></table>
+    </div>
+  </div>
+  <div class="bbm-modal__bottombar">
+    <a href="#" id="edit_data_btn" style="text-align: left" class="btn">Edit Data</a>&nbsp;&nbsp;&nbsp;
+    <a href="#" id="delete_data_btn" style="text-align: left" class="btn">Delete Entry</a>&nbsp;&nbsp;&nbsp;
+    <a href="#" class="btn btn-primary">Done</a>
+  </div>
+</div></div>
+</div>
+ -->
+
+    
+<div id="viz-chrome">
+  <div id="viz-actions" class="container container-padded">
+
+    <div id="repo-meta" class="ten columns">
+      <h4>user / Patient List</h4>
+      <div style="margin-bottom: 8px;">       
+          List of patients exist in database
+      </div>
+    </div>
+   
+  </div>
+
+</div>
+<div id="vizContainer">
+  <!-- Raw data view -->
+  <div style="display: block;" id="raw-viz" class="viz">
+
+  <div class="DataTable DataTable--fitContainer">
+
+    
+    <div class="DataTable-table">
+      <table class="table fixed"><thead><tr>
+
+
+    <th class="js-sort" data-field="name_last">
+        Last Name<i class="icon-sort DataTable-sortIcon"></i>
+    </th>
+	
+	<th class="js-sort" data-field="name_first">
+        First Name<i class="icon-sort DataTable-sortIcon"></i>
+    </th>
+
+    <th class="js-sort" data-field="birthdate">
+        Birthdate<i class="icon-sort DataTable-sortIcon"></i>
+    </th>
+
+    <th class="js-sort" data-field="sex">
+        Sex<i class="icon-sort DataTable-sortIcon"></i>
+    </th>
+
+    <th class="js-sort" data-field="external_identifier">
+        Identifier<i class="icon-sort DataTable-sortIcon"></i>
+    </th>
+
+    <th>&nbsp;</th>
+</tr></thead>
+	<tbody id="data_body">
+		<tr>
+			<td>Last name</td>
+			<td>First Name</td>
+			<td>Gender</td>
+			<td>Sex</td>
+			<td>PID</td>
+		</tr>
+	</tbody>
+	</table>
+    </div>
+  </div>
+
+</div>
+
+</div>
+
+
+    
+
+    <footer class="footer sticky-footer">
+  <div class="container">
+  	<div class="row">
+  		<div class="sixteen columns">
+      		Built by the <a href="http://distributedhealth.org/">Distributed Health Lab</a> at University of California, San Diego.
+    	</div>
+    </div>
+  </div>
+</footer>
+
+
+    
+
+
+</body>
+</html>
