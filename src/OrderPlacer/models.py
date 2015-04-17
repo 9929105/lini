@@ -23,8 +23,8 @@ class BaseModel(models.Model):
 class ExternalIdentifier(BaseModel):
     identifier = models.CharField(max_length=500)
     
-    issued_by = models.CharField(max_length=200)
-    unique_pool = models.CharField(max_length=200)
+    issued_by = models.CharField(max_length=200,null=True, blank=True)
+    unique_pool = models.CharField(max_length=200,null=True,blank=True)
     
     content_type = models.ForeignKey(ContentType)
     object_id = models.PositiveIntegerField()
@@ -69,22 +69,23 @@ class PriceHistory (BaseModel):
 class Encounter(BaseModel):   
     patient = models.ForeignKey(Person,related_name="encounter_patient")
     encntr_dt = models.DateTimeField(null=True)
-    provider = models.ForeignKey(Person,related_name="encounter_provider")
-    followup_dt = models.DateTimeField(null=True)
+    provider = models.ForeignKey(Person,blank=True, related_name="encounter_provider")
+    followup_dt = models.DateTimeField(null=True, blank=True)
+
 
 class Order(BaseModel):
     
-    order_identifier = models.CharField(max_length=200)
+    order_identifier = models.CharField(max_length=200,blank=True)
     patient = models.ForeignKey(Person, related_name="orders_patient")
     service =models.ForeignKey(MedicalService, related_name="order_service")
     price = models.FloatField(default=0)
-    price_adjusted_dt = models.DateTimeField(null=True)
-    price_adjusted_by = models.ForeignKey(User,null=True)   
+    price_adjusted_dt = models.DateTimeField(null=True, blank=True)
+    price_adjusted_by = models.ForeignKey(User,null=True, blank=True)   
     order_dt = models.DateTimeField(auto_now_add=True)
-    collect_dt = models.DateTimeField(null=True)
+    collect_dt = models.DateTimeField(null=True, blank=True)
     
-    ordered_by = models.ForeignKey(Person, related_name="orders_ordered_by")
-    collected_by = models.ForeignKey(Person, related_name="order_collected_by")
+    ordered_by = models.ForeignKey(Person, null=True, blank=True, related_name="orders_ordered_by")
+    collected_by = models.ForeignKey(Person, null=True, blank=True, related_name="order_collected_by")
     
     
         

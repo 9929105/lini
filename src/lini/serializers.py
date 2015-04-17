@@ -20,7 +20,7 @@ class RoleSerializer(serializers.ModelSerializer):
         model = Role
         
 class PersonSerializer(serializers.ModelSerializer):
-    identifiers =ExternalIdentifierSerializer(many=True,required=False, blank=True, allow_add_remove=True, source="identifiers.all") 
+    identifiers =ExternalIdentifierSerializer(many=True,required=False, blank=True, allow_add_remove=False, source="identifiers") 
     class Meta:
         model = Person
         dept = 2
@@ -59,9 +59,13 @@ class EncounterSerializer(serializers.ModelSerializer):
         dept =2
 
 class OrderSerializer(serializers.ModelSerializer):
+    patient = PersonSerializer(required=True,blank=False, read_only=False)
+    ordered_by = PersonSerializer(required=False, blank=True, read_only=False)
+    collected_by = PersonSerializer(required=False, blank=True, read_only=False)
+    service = MedicalServiceSerializer(required=True,blank=False, read_only=False)
     class Meta:
         model = Order
-         
+        dept=2
 
 class UserSerializer(serializers.ModelSerializer):
     class Meta:

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en"><head>
+<html lang="en">
+<head>
 <meta http-equiv="content-type" content="text/html; charset=UTF-8">
     <meta charset="utf-8">
     <title>user / Patient List</title>
@@ -18,10 +19,10 @@
 <link rel="stylesheet" type="text/css" href="patient_lists_files/MarkerCluster.css">
 <link rel="stylesheet" type="text/css" href="patient_lists_files/MarkerCluster_002.css">
 
-<script src="patient_lists_files/common.js" data-requiremodule="/static/js/common.js" data-requirecontext="_" async="" charset="utf-8" type="text/javascript"></script></head>
 
+<script src="patient_lists_files/patient_lists.js" charset="utf-8" type="text/javascript"></script>
 
-
+</head>
 <body>
     
     <div class="topbar-wrapper">
@@ -53,7 +54,9 @@
             </div>
         </div>
     </div>
-    
+
+	<div id="modal">
+	</div>    
 <!-- -
 <div id="modal">
 <div class="bbm-wrapper" style="display: block;"><div style="opacity: 1;" class="bbm-modal bbm-modal--open">
@@ -116,38 +119,11 @@
 
     
     <div class="DataTable-table">
-      <table class="table fixed"><thead><tr>
-
-
-    <th class="js-sort" data-field="name_last">
-        Last Name<i class="icon-sort DataTable-sortIcon"></i>
-    </th>
-	
-	<th class="js-sort" data-field="name_first">
-        First Name<i class="icon-sort DataTable-sortIcon"></i>
-    </th>
-
-    <th class="js-sort" data-field="birthdate">
-        Birthdate<i class="icon-sort DataTable-sortIcon"></i>
-    </th>
-
-    <th class="js-sort" data-field="sex">
-        Sex<i class="icon-sort DataTable-sortIcon"></i>
-    </th>
-
-    <th class="js-sort" data-field="external_identifier">
-        Identifier<i class="icon-sort DataTable-sortIcon"></i>
-    </th>
-
-    <th>&nbsp;</th>
-</tr></thead>
+      <table class="table fixed" id="result_table">
+      
 	<tbody id="data_body">
 		<tr>
-			<td>Last name</td>
-			<td>First Name</td>
-			<td>Gender</td>
-			<td>Sex</td>
-			<td>PID</td>
+			
 		</tr>
 	</tbody>
 	</table>

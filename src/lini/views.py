@@ -23,13 +23,17 @@ class PersonViewSet(viewsets.ModelViewSet):
     serializer_class = PersonSerializer
         
     def post_save(self, obj, created=False):
-        pid = ExternalIdentifier()
-        pid.content_type = ContentType.objects.get_for_model(Person)
-        pid.modified_by = obj.modified_by
-        pid.created_by = obj.created_by
-        pid.identifier = obj.identifier
-        pid.object_id = obj.id
-        pid.save()
+        pid = obj.identifiers.filter(unique_pool="MRN",issued_by="MHC",identifier=obj.identifier)
+        if pid is None:
+            pid = ExternalIdentifier()
+            pid.content_type = ContentType.objects.get_for_model(Person)
+            pid.modified_by = obj.modified_by
+            pid.created_by = obj.created_by
+            pid.identifier = obj.identifier
+            pid.object_id = obj.id
+            pid.unique_pool = "MRN"
+            pid.issued_by = "MHC"
+            pid.save()
 
          
 class ExternalIdentifierViewSet(viewsets.ModelViewSet):
